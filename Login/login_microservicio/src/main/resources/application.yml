@@ -1,0 +1,30 @@
+server:
+  port: 8090   # Puerto diferente al monolito
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/login_db
+    username: postgres
+    password: admin123
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update   # Solo en desarrollo
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+jwt:
+  secret: ${JWT_SECRET}                   # no poner valor por defecto
+  refresh-secret: ${JWT_REFRESH_SECRET}  # tampoco
+  expiration-ms: ${JWT_EXPIRATION_MS:3600000}        # puedes dejar un valor por defecto
+  refresh-expiration-ms: ${JWT_REFRESH_EXPIRATION_MS:86400000}  # valor por defecto
+
+# Habilitar endpoints health e info para el monitorio de gateway
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+  endpoint:
+    health:
+      show-details: always # Mostrar detalles del health endpoint

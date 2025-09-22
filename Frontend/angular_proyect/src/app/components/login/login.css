@@ -1,0 +1,80 @@
+.login-wrapper {
+  display: flex;
+  width: 60%;
+  max-width: 900px;
+  height: 500px;
+  margin: 130px auto;
+
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.login-left {
+  flex:0.9;
+  /* Gradiente + Imagen */
+  background-image: linear-gradient(
+      rgb(37, 37, 119,0.3) ,   /* azul semi-transparente */
+      rgb(37, 37, 119,0.9)    ),
+    url("/assets/fondo.jpg"); /* aquí va tu imagen */
+
+  background-size: cover;
+  background-position: center;
+  color: #fffffff1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+}
+
+
+
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.login-container {
+  width: 90%;
+  max-width: 300px;
+  border: none;
+  text-align: center;
+}
+
+.login-logo {
+  display: block;
+  margin: 0 auto 1rem auto;
+  width: 70px;
+}
+
+.input-line {
+  width: 110%;
+  border: none;
+  border-bottom: 1px solid #6969693d;
+  border-radius: 0;
+  background: transparent;
+  margin-bottom: 3rem;
+}
+
+.input-line:focus {
+  border-color: #2525779d;
+  outline: none;
+}
+
+.login-button {
+  width: 100%;
+  background-color: #252577;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 8px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+
+
+}

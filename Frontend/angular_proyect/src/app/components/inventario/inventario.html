@@ -1,0 +1,68 @@
+<!-- Título del inventario -->
+<div class="d-flex justify-content-start mb-3" style="max-width: 900px; margin: 0 auto;">
+  <h4 class="mb-0" style="color:#495057">Inventario de Herramientas</h4>
+</div>
+
+<!-- Tabla de herramientas con estilo de tarjeta -->
+<div class="card mx-auto shadow mb-5" style="max-width: 1000px; border-radius: 0;">
+  <div class="card-body p-0">
+    <table class="table mb-0">
+      <thead>
+        <tr class="text-start fs-6">
+          <th class="fw-semibold"
+            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
+            Nombre</th>
+          <th class="fw-semibold"
+            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
+            Categoría</th>
+          <th class="fw-semibold text-center"
+            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
+            Codigo</th>
+            <th class="fw-semibold text-center"
+            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
+            Modelo</th>
+            <th class="fw-semibold text-center"
+            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
+            Serie</th>
+            <th class="fw-semibold text-center"
+            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
+            Marca</th>
+            <th class="fw-semibold text-center"
+            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
+            Color</th>
+            <th class="fw-semibold text-center"
+            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
+            Ubicación</th>
+            <th class="fw-semibold text-center"
+            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
+            Acción</th>
+        </tr>
+        
+      </thead>
+      <tbody>
+        <tr *ngFor="let herramienta of herramientas">
+          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.maquina }}</td>
+          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.categoria }}</td>
+          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.codigo }}</td>
+          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.modelo }}</td>
+          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.serie }}</td>
+          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.marca }}</td>
+          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.color }}</td>
+          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.ubicacion }}</td>
+
+          <td class="text-center" style="height: 90px; vertical-align: middle;">
+            <div class="d-inline-flex gap-2">
+              <a [routerLink]="['/superadmin/herramientas', herramienta.maquina]"
+                class="btn btn-primary btn-sm rounded-circle"
+                style="width: 34px; height: 34px; background-color: rgb(37, 37, 119); border: none;">
+                <i class="fas fa-eye"></i>
+              </a>
+
+
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

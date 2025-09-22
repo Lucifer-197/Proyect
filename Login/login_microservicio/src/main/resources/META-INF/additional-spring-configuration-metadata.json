@@ -1,0 +1,27 @@
+{"properties": [
+  {
+    "name": "jwt.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.secret'"
+  },
+  {
+    "name": "jwt.refresh-secret",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.refresh-secret'"
+  },
+  {
+    "name": "jwt.expiration-ms",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.expiration-ms'"
+  },
+  {
+    "name": "jwt.refresh-expiration-ms",
+    "type": "java.lang.String",
+    "description": "A description for 'jwt.refresh-expiration-ms'"
+  },
+  {
+    "name": "management.environment.JWT_-sECRET",
+    "type": "java.lang.String",
+    "description": "A description for 'management.environment.JWT_-sECRET'"
+  }
+]}

@@ -1,0 +1,71 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          default-filters:
+            - PreserveHostHeader
+          routes:
+            # -------------------------
+            # LOGIN SERVICE
+            # -------------------------
+            - id: login-service
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/login/**
+              filters:
+                - RewritePath=/api/login/(?<segment>.*), /${segment}
+
+            # -------------------------
+            # USUARIOS SERVICE
+            # -------------------------
+            - id: usuarios-service
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/usuarios/**
+ 
+
+            # -------------------------
+            # ROLES SERVICE
+            # -------------------------
+            - id: roles-service
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/roles/**
+    
+
+            # -------------------------
+            # LOGOUT SERVICE
+            # -------------------------
+            - id: logout-service
+              uri: http://localhost:8090
+              predicates:
+                - Path=/api/logout/**
+              filters:
+                - RewritePath=/api/logout/(?<segment>.*), /${segment}
+
+            # -------------------------
+            # INVENTARIO SERVICE
+            # -------------------------
+            - id: inventario-service
+              uri: http://localhost:8091
+              predicates:
+                - Path=/api/inventario/**
+              filters:
+                - RewritePath=/api/inventario/(?<segment>.*), /api/inventario/${segment}
+
+            # -------------------------
+            # HERRAMIENTAS SERVICE
+            # -------------------------
+            - id: herramientas-service
+              uri: http://localhost:8091
+              predicates:
+                - Path=/api/herramientas/**
+              filters:
+                - RewritePath=/api/herramientas/(?<segment>.*), /api/herramientas/${segment}

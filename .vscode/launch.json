@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GatewayApplication<gateway>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.proyect.gateway.GatewayApplication",
+            "projectName": "gateway",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-LoginMicroservicioApplication<login_microservicio>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.proyect.login_microservicio.LoginMicroservicioApplication",
+            "projectName": "login_microservicio",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootLoginApplication<springboot_login>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.springboot_login.SpringbootLoginApplication",
+            "projectName": "springboot_login",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

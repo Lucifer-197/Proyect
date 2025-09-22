@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-LoginMicroservicioApplication<login_microservicio>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.proyect.login_microservicio.LoginMicroservicioApplication",
+            "projectName": "login_microservicio",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

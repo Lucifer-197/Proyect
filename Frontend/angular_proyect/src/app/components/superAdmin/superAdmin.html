@@ -1,0 +1,164 @@
+<div class="d-flex flex-column" style="min-height: 100vh;">
+  <!-- Overlay -->
+  <div *ngIf="sidebarVisible" class="position-fixed" (click)="toggleSidebar()"
+    style="left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.3); z-index: 998;">
+  </div>
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand  border-bottom px-3"
+    style="height: 56px; z-index: 999; position: fixed; top: 0; left: 0; right: 0;background-color: white;box-shadow:0 .5rem 1rem #2c33491a">
+    <!-- Botón menú -->
+    <button style="border: none;background-color: white ;" (click)="toggleSidebar()">
+      <i class="bi bi-list fs-2"></i>
+    </button>
+
+    <!-- Logo -->
+    <img src="assets/logo.png" alt="Logo" style="height: 30px; margin-left: 30px;" />
+
+    <!-- Usuario -->
+    <div class="d-flex align-items-center ms-auto fs-6 fw-normal text-dark">
+      <span class="me-2">{{ nombreUsuario }}</span>
+      <i class="fas fa-user-circle" style="font-size: 27px; color: #495057;"></i>
+    </div>
+  </nav>
+
+  <!-- Contenido -->
+  <div class="d-flex flex-grow-1" style="background-color: #edf1f7;">
+
+  <!-- Sidebar expandido -->
+<div *ngIf="sidebarVisible"
+     class="d-flex flex-column"
+     style="background-color: rgb(37, 37, 119); width: 220px;  min-height: calc(100vh - 56px); position: fixed; top: 56px; left: 0; z-index: 1000; padding: 20px 0; justify-content: space-between;">
+
+  <!-- Menús arriba -->
+  <ul class="nav flex-column px-3">
+    <!-- Inicio -->
+    <li class="nav-item mb-4">
+      <a class="nav-link" routerLink="/superadmin" routerLinkActive="active" (click)="toggleSidebar()"
+         style="border-radius: 8px 0 0 8px; color:white;"
+         onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='black'; this.querySelector('i').style.color='black';"
+         onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.querySelector('i').style.color='white';">
+        <i class="fas fa-home me-2"></i> Inicio
+      </a>
+    </li>
+
+    <!-- Gestión de usuario -->
+    <li class="nav-item mb-4">
+      <button class="nav-link text-white w-100 text-start d-flex justify-content-between align-items-center bg-transparent border-0"
+              (click)="toggleSubMenuGestion()" style="border-radius: 5px;"
+              onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'"
+              onmouseout="this.style.backgroundColor='transparent'">
+        <span><i class="fas fa-users-cog me-2"></i> Gestión de usuario</span>
+        <i [class]="submenuGestion ? 'fas fa-chevron-up' : 'fas fa-chevron-down' "></i>
+      </button>
+      <ul *ngIf="submenuGestion" class="nav flex-column ms-3 mt-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/superadmin/roles" routerLinkActive="active" (click)="toggleSidebar()"
+             style="border-radius: 8px 0 0 8px; color:white !important;"
+             onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='black'; this.querySelector('i').style.color='black';"
+             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.querySelector('i').style.color='white';">
+            <i class="fas fa-user-tag me-2"></i> Roles
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <a class="nav-link" routerLink="/superadmin/usuarios" routerLinkActive="active" (click)="toggleSidebar()"
+             style="border-radius: 8px 0 0 8px; color:white !important;"
+             onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='black'; this.querySelector('i').style.color='black';"
+             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.querySelector('i').style.color='white';">
+            <i class="fas fa-user-friends me-2"></i> Usuarios
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Gestión de inventario -->
+    <li class="nav-item mb-2">
+      <button class="nav-link text-white w-100 text-start d-flex justify-content-between align-items-center bg-transparent border-0"
+              (click)="toggleSubMenuInventario()" style="border-radius: 5px;"
+              onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)'"
+              onmouseout="this.style.backgroundColor='transparent'">
+        <span><i class="fa-solid fa-table-list me-2"></i> Gestión de inventario</span>
+        <i [class]="submenuInventario ? 'fas fa-chevron-up' : 'fas fa-chevron-down'"></i>
+      </button>
+      <ul *ngIf="submenuInventario" class="nav flex-column ms-3 mt-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/superadmin/herramientas" routerLinkActive="active" (click)="toggleSidebar()"
+             style="border-radius: 8px 0 0 8px; color:white !important;"
+             onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='black'; this.querySelector('i').style.color='black';"
+             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.querySelector('i').style.color='white';">
+            <i class="fa-solid fa-screwdriver-wrench me-2"></i> Herramientas
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <a class="nav-link active" routerLink="/superadmin/inventario" routerLinkActive="active" (click)="toggleSidebar()"
+             style="border-radius: 8px 0 0 8px; color:white !important;"
+             onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='black'; this.querySelector('i').style.color='black';"
+             onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.querySelector('i').style.color='white';">
+            <i class="fa-solid fa-magnifying-glass me-2"></i> Inventario
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- Logout abajo -->
+  <div class="px-3 mb-2 ms-3">
+    <a class="nav-link active" style="border-radius: 8px 0 0 8px;padding:8px; color:white !important; cursor: pointer;"
+       (click)="logout()"
+       onmouseover="this.style.backgroundColor='#ffffff'; this.style.color='black'; this.querySelector('i').style.color='black';"
+       onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.querySelector('i').style.color='white';">
+      <i class="fa-solid fa-right-from-bracket me-2"></i> Cerrar sesión
+    </a>
+  </div>
+</div>
+
+
+<!-- Sidebar reducido solo con íconos -->
+<div *ngIf="!sidebarVisible" 
+     class="d-flex flex-column justify-content-between "
+     style="width: 60px; min-height: calc(100vh - 56px); /* altura total menos navbar */
+            position: fixed; left: 0; top: 56px; z-index: 1000; background-color:#252577;">
+
+  <!-- Íconos de navegación arriba -->
+  <div class="d-flex flex-column align-items-center mt-4" style="gap: 50px;">
+    <a title="Inicio" routerLink="/superadmin" (click)="toggleSidebar()">
+      <i class="fas fa-home" style="color:white; cursor: pointer;"></i>
+    </a>
+    <a title="Gestión de usuario" (click)="toggleSidebar()">
+      <i class="fas fa-users-cog " style="color:white; cursor: pointer;"></i>
+    </a>
+    <a title="Gestión de inventario" (click)="toggleSidebar()">
+      <i class="fa-solid fa-table-list " style="color:white; cursor: pointer;"></i>
+    </a>
+  </div>
+
+  <!-- Logout abajo -->
+  <div class="d-flex flex-column align-items-center mb-4 ms-2">
+    <a title="Cerrar sesión" (click)="logout()">
+      <i class="fa-solid fa-right-from-bracket " style="color:white; cursor: pointer;"></i>
+    </a>
+  </div>
+</div>
+
+
+
+    <!-- Línea divisoria vertical -->
+    <div *ngIf="!sidebarVisible"
+      style="width: 1px; background-color: #cccccc44; min-height: 100vh; position: fixed; top: 56px; left: 60px; z-index: 1000;">
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="flex-grow-1"
+      [ngStyle]="{ 'margin-left': sidebarVisible ? '220px' : '61px', 'transition': 'margin-left 0.3s ease' }">
+      <div class="p-4">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="text-black text-center py-3" style="background-color: white;"
+    [ngStyle]="{ 'margin-left': sidebarVisible ? '220px' : '61px', 'transition': 'margin-left 0.3s ease' }">
+    <p class="mb-0">© 2025 Aplicación - Todos los derechos reservados</p>
+  </footer>
+</div>

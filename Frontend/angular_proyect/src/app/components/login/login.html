@@ -1,0 +1,41 @@
+<div class="login-wrapper">
+  <!-- Lado izquierdo -->
+  <div class="login-left">
+   
+  </div>
+
+  <!-- Lado derecho -->
+  <div class="login-right">
+    <div class="login-container">
+      
+      <!-- Logo centrado -->
+      <img src="assets/logo.png" alt="Logo"
+           class="login-logo">
+
+      <!-- Formulario -->
+      <form (ngSubmit)="onLogin()">
+        <input type="text"
+               [(ngModel)]="nombreUsuario"
+               name="nombreUsuario"
+               placeholder="Nombre Usuario"
+               required
+               class="input-line mt-5" />
+
+        <input type="password"
+               [(ngModel)]="clave"
+               name="clave"
+               placeholder="Contraseña"
+               required
+               class="input-line mt-5" />
+
+        <button type="submit" class="login-button mt-5">
+          Iniciar sesión
+        </button>
+      </form>
+
+      @if (errorMessage) {
+        <div class="text-danger mt-2 mx-auto">{{ errorMessage }}</div>
+      }
+    </div>
+  </div>
+</div>

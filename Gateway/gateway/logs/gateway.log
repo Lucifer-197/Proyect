@@ -1,0 +1,469 @@
+2025-09-17T09:38:03.077-05:00  INFO 6512 --- [api-gateway] [main] com.proyect.gateway.GatewayApplication   : Starting GatewayApplication using Java 17.0.15 with PID 6512 (C:\Users\EQUIPO 86\Desktop\Mantenimiento\Gateway\gateway\target\classes started by EQUIPO 86 in C:\Users\EQUIPO 86\Desktop\Mantenimiento\Gateway\gateway)
+2025-09-17T09:38:03.124-05:00  INFO 6512 --- [api-gateway] [main] com.proyect.gateway.GatewayApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-09-17T09:38:06.432-05:00  INFO 6512 --- [api-gateway] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=572ed0b8-cb87-3404-811b-317730176b41
+2025-09-17T09:38:07.765-05:00  WARN 6512 --- [api-gateway] [main] GatewayClassPathWarningAutoConfiguration : 
+
+**********************************************************
+
+The artifact spring-cloud-gateway-server is deprecated. It will be removed in the next major release. Please add spring-cloud-gateway-server-webflux dependency.
+
+**********************************************************
+
+
+2025-09-17T09:38:08.112-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.gateway.config.GatewayProperties   : Routes supplied from Gateway Properties: [RouteDefinition{id='login-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/login/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/login/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://login1:8080, order=0, metadata={}, enabled=true}, RouteDefinition{id='usuarios-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/usuarios/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/usuarios/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://login1:8080, order=0, metadata={}, enabled=true}, RouteDefinition{id='roles-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/roles/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/roles/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://login1:8080, order=0, metadata={}, enabled=true}, RouteDefinition{id='logout-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/logout/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/logout/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://login1:8080, order=0, metadata={}, enabled=true}, RouteDefinition{id='inventario-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/inventario/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/inventario/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://host.docker.internal:8091, order=0, metadata={}, enabled=true}, RouteDefinition{id='herramientas-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/herramientas/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/herramientas/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://host.docker.internal:8091, order=0, metadata={}, enabled=true}]
+2025-09-17T09:38:08.274-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2025-09-17T09:38:08.275-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2025-09-17T09:38:08.275-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2025-09-17T09:38:08.275-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2025-09-17T09:38:08.275-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2025-09-17T09:38:08.275-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2025-09-17T09:38:08.276-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2025-09-17T09:38:08.276-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2025-09-17T09:38:08.276-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2025-09-17T09:38:08.276-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2025-09-17T09:38:08.277-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2025-09-17T09:38:08.277-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2025-09-17T09:38:08.277-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2025-09-17T09:38:08.277-05:00  INFO 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2025-09-17T09:38:08.359-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.w.r.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-09-17T09:38:08.656-05:00  INFO 6512 --- [api-gateway] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2025-09-17T09:38:08.715-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.w.r.r.m.a.ControllerMethodResolver   : ControllerAdvice beans: none
+2025-09-17T09:38:08.951-05:00  WARN 6512 --- [api-gateway] [main] s.w.s.StarterDeprecatedAutoConfiguration : 
+
+**********************************************************
+
+spring-cloud-starter-gateway is deprecated. It will be removed in the next major release. Please use spring-cloud-starter-gateway-server-webflux instead.
+
+**********************************************************
+
+
+2025-09-17T09:38:09.230-05:00  INFO 6512 --- [api-gateway] [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080 (http)
+2025-09-17T09:38:09.684-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition login-service applying {_genkey_0=/api/login/**} to Path
+2025-09-17T09:38:09.719-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition login-service applying filter {_genkey_0=/api/login/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T09:38:09.744-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: login-service
+2025-09-17T09:38:09.744-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition usuarios-service applying {_genkey_0=/api/usuarios/**} to Path
+2025-09-17T09:38:09.746-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition usuarios-service applying filter {_genkey_0=/api/usuarios/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T09:38:09.747-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: usuarios-service
+2025-09-17T09:38:09.748-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition roles-service applying {_genkey_0=/api/roles/**} to Path
+2025-09-17T09:38:09.750-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition roles-service applying filter {_genkey_0=/api/roles/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T09:38:09.755-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: roles-service
+2025-09-17T09:38:09.756-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition logout-service applying {_genkey_0=/api/logout/**} to Path
+2025-09-17T09:38:09.760-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition logout-service applying filter {_genkey_0=/api/logout/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T09:38:09.761-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: logout-service
+2025-09-17T09:38:09.762-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition inventario-service applying {_genkey_0=/api/inventario/**} to Path
+2025-09-17T09:38:09.766-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition inventario-service applying filter {_genkey_0=/api/inventario/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T09:38:09.768-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: inventario-service
+2025-09-17T09:38:09.769-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition herramientas-service applying {_genkey_0=/api/herramientas/**} to Path
+2025-09-17T09:38:09.772-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition herramientas-service applying filter {_genkey_0=/api/herramientas/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T09:38:09.774-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: herramientas-service
+2025-09-17T09:38:09.780-05:00 DEBUG 6512 --- [api-gateway] [main] o.s.c.g.filter.GatewayMetricsFilter      : New routes count: 6
+2025-09-17T09:38:09.784-05:00  INFO 6512 --- [api-gateway] [main] com.proyect.gateway.GatewayApplication   : Started GatewayApplication in 8.111 seconds (process running for 9.699)
+2025-09-17T09:38:09.792-05:00  WARN 6512 --- [api-gateway] [main] ServerWebfluxPropertiesMigrationListener : 
+The use of configuration keys that have been renamed was found in the environment:
+
+Property source 'Config resource 'class path resource [application.yml]' via location 'optional:classpath:/'':
+	Key: spring.cloud.gateway.routes[0].id
+		Line: 11
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].id
+	Key: spring.cloud.gateway.routes[0].uri
+		Line: 12
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].uri
+	Key: spring.cloud.gateway.routes[0].predicates[0]
+		Line: 14
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].predicates[0]
+	Key: spring.cloud.gateway.routes[0].filters[0]
+		Line: 16
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].filters[0]
+	Key: spring.cloud.gateway.routes[1].id
+		Line: 18
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].id
+	Key: spring.cloud.gateway.routes[1].uri
+		Line: 19
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].uri
+	Key: spring.cloud.gateway.routes[1].predicates[0]
+		Line: 21
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].predicates[0]
+	Key: spring.cloud.gateway.routes[1].filters[0]
+		Line: 23
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].filters[0]
+	Key: spring.cloud.gateway.routes[2].id
+		Line: 25
+		Replacement: spring.cloud.gateway.server.webflux.routes[2].id
+	Key: spring.cloud.gateway.routes[2].uri
+		Line: 26
+		Replacement: spring.cloud.gateway.server.webflux.routes[2].uri
+	Key: spring.cloud.gateway.routes[2].predicates[0]
+		Line: 28
+		Replacement: spring.cloud.gateway.server.webflux.routes[2].predicates[0]
+	Key: spring.cloud.gateway.routes[2].filters[0]
+		Line: 30
+		Replacement: spring.cloud.gateway.server.webflux.routes[2].filters[0]
+	Key: spring.cloud.gateway.routes[3].id
+		Line: 32
+		Replacement: spring.cloud.gateway.server.webflux.routes[3].id
+	Key: spring.cloud.gateway.routes[3].uri
+		Line: 33
+		Replacement: spring.cloud.gateway.server.webflux.routes[3].uri
+	Key: spring.cloud.gateway.routes[3].predicates[0]
+		Line: 35
+		Replacement: spring.cloud.gateway.server.webflux.routes[3].predicates[0]
+	Key: spring.cloud.gateway.routes[3].filters[0]
+		Line: 37
+		Replacement: spring.cloud.gateway.server.webflux.routes[3].filters[0]
+	Key: spring.cloud.gateway.routes[4].id
+		Line: 42
+		Replacement: spring.cloud.gateway.server.webflux.routes[4].id
+	Key: spring.cloud.gateway.routes[4].uri
+		Line: 43
+		Replacement: spring.cloud.gateway.server.webflux.routes[4].uri
+	Key: spring.cloud.gateway.routes[4].predicates[0]
+		Line: 45
+		Replacement: spring.cloud.gateway.server.webflux.routes[4].predicates[0]
+	Key: spring.cloud.gateway.routes[4].filters[0]
+		Line: 47
+		Replacement: spring.cloud.gateway.server.webflux.routes[4].filters[0]
+	Key: spring.cloud.gateway.routes[5].id
+		Line: 49
+		Replacement: spring.cloud.gateway.server.webflux.routes[5].id
+	Key: spring.cloud.gateway.routes[5].uri
+		Line: 50
+		Replacement: spring.cloud.gateway.server.webflux.routes[5].uri
+	Key: spring.cloud.gateway.routes[5].predicates[0]
+		Line: 52
+		Replacement: spring.cloud.gateway.server.webflux.routes[5].predicates[0]
+	Key: spring.cloud.gateway.routes[5].filters[0]
+		Line: 54
+		Replacement: spring.cloud.gateway.server.webflux.routes[5].filters[0]
+
+
+Each configuration key has been temporarily mapped to its replacement for your convenience. To silence this warning, please update your configuration to use the new keys.
+
+2025-09-17T09:54:38.781-05:00 DEBUG 6512 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [1a46dda2, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:59451] New http connection, requesting read
+2025-09-17T09:54:38.781-05:00 DEBUG 6512 --- [api-gateway] [reactor-http-nio-2] r.n.http.server.HttpServerOperations     : [add416ad, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:59450] New http connection, requesting read
+2025-09-17T09:54:38.838-05:00 DEBUG 6512 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [1a46dda2, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:59451] Increasing pending responses count: 1
+2025-09-17T09:54:38.870-05:00 DEBUG 6512 --- [api-gateway] [reactor-http-nio-3] reactor.netty.http.server.HttpServer     : [1a46dda2-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:59451] Handler is being applied: org.springframework.http.server.reactive.ReactorHttpHandlerAdapter@cfb2ce8
+2025-09-17T09:54:39.105-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+2025-09-17T09:54:39.113-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'POST /logout'
+2025-09-17T09:54:39.114-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T09:54:39.130-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/actuator/health', method=null}
+2025-09-17T09:54:39.131-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'null /actuator/health'
+2025-09-17T09:54:39.132-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T09:54:39.133-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/api/login/**', method=null}
+2025-09-17T09:54:39.135-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] athPatternParserServerWebExchangeMatcher : Checking match of request : '/api/login'; against '/api/login/**'
+2025-09-17T09:54:39.136-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : matched
+2025-09-17T09:54:39.138-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] a.DelegatingReactiveAuthorizationManager : Checking authorization on '/api/login' using org.springframework.security.config.web.server.ServerHttpSecurity$AuthorizeExchangeSpec$Access$$Lambda$844/0x000001f90753e800@115eda79
+2025-09-17T09:54:39.143-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.s.w.s.a.AuthorizationWebFilter       : Authorization successful
+2025-09-17T09:54:39.174-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.c.g.h.RoutePredicateHandlerMapping   : Route matched: login-service
+2025-09-17T09:54:39.189-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.c.g.h.RoutePredicateHandlerMapping   : Mapping [Exchange: POST http://localhost:8080/api/login] to Route{id='login-service', uri=http://login1:8080, order=0, predicate=(RouteDefinitionRouteLocator$$Lambda$1305/0x000001f9076735d0 && Paths: [/api/login/**], match trailing slash: true), gatewayFilters=[[[RewritePath /api/login/(?<segment>.*) = '/${segment}'], order = 1]], metadata={}}
+2025-09-17T09:54:39.189-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.c.g.h.RoutePredicateHandlerMapping   : [1a46dda2-1] Mapped to org.springframework.cloud.gateway.handler.FilteringWebHandler@5c5c7cc4
+2025-09-17T09:54:39.195-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] o.s.c.g.handler.FilteringWebHandler      : Sorted gatewayFilterFactories: [[GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.filter.RemoveCachedBodyFilter@2bb0e277}, order = -2147483648], [GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.filter.AdaptCachedBodyGlobalFilter@5b3518e1}, order = -2147482648], [GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.filter.NettyWriteResponseFilter@5c9a4f3b}, order = -1], [GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.filter.ForwardPathFilter@657b3b}, order = 0], [GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.filter.GatewayMetricsFilter@65753724}, order = 0], [[RewritePath /api/login/(?<segment>.*) = '/${segment}'], order = 1], [GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.filter.RouteToRequestUrlFilter@6f24ce45}, order = 10000], [GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.config.GatewayNoLoadBalancerClientAutoConfiguration$NoLoadBalancerClientFilter@2bc16fe2}, order = 10150], [GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.filter.WebsocketRoutingFilter@2cea921a}, order = 2147483646], [GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.filter.NettyRoutingFilter@300a38e7}, order = 2147483647], [GatewayFilterAdapter{delegate=org.springframework.cloud.gateway.filter.ForwardRoutingFilter@e881e46}, order = 2147483647]]
+2025-09-17T09:54:39.303-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] g.f.h.o.ObservedRequestHttpHeadersFilter : Will instrument the HTTP request headers [Content-Type:"application/json", User-Agent:"PostmanRuntime/7.46.1", Accept:"*/*", Cache-Control:"no-cache", Postman-Token:"0ac5d5c3-ce83-42dd-a0f6-a9388ea2b423", Host:"localhost:8080", Accept-Encoding:"gzip, deflate, br", Content-Length:"68"]
+2025-09-17T09:54:39.314-05:00 DEBUG 6512 --- [api-gateway] [parallel-1] g.f.h.o.ObservedRequestHttpHeadersFilter : Client observation  {name=http.client.requests(null), error=null, context=name='http.client.requests', contextualName='null', error='null', lowCardinalityKeyValues=[http.method='POST', http.status_code='UNKNOWN', spring.cloud.gateway.route.id='login-service', spring.cloud.gateway.route.uri='http://login1:8080'], highCardinalityKeyValues=[http.uri='http://localhost:8080/api/login'], map=[class io.micrometer.core.instrument.Timer$Sample='io.micrometer.core.instrument.Timer$Sample@a0a7eb7', class io.micrometer.core.instrument.LongTaskTimer$Sample='SampleImpl{duration(seconds)=0.0022502, duration(nanos)=2250200.0, startTimeNanos=511415189384000}'], parentObservation=org.springframework.security.web.server.ObservationWebFilterChainDecorator$PhasedObservation@75c3c73b} created for the request. New headers are [Content-Type:"application/json", User-Agent:"PostmanRuntime/7.46.1", Accept:"*/*", Cache-Control:"no-cache", Postman-Token:"0ac5d5c3-ce83-42dd-a0f6-a9388ea2b423", Host:"localhost:8080", Accept-Encoding:"gzip, deflate, br", Content-Length:"68"]
+2025-09-17T09:54:39.691-05:00 DEBUG 6512 --- [api-gateway] [reactor-http-nio-4] .o.ObservationClosingWebExceptionHandler : An exception occurred and observation was not previously stopped, will stop it. The exception was [java.net.UnknownHostException: Failed to resolve 'login1' [A(1)] after 2 queries ]
+2025-09-17T09:54:39.718-05:00 ERROR 6512 --- [api-gateway] [reactor-http-nio-4] a.w.r.e.AbstractErrorWebExceptionHandler : [1a46dda2-1]  500 Server Error for HTTP POST "/api/login"
+
+java.net.UnknownHostException: Failed to resolve 'login1' [A(1)] after 2 queries 
+	at io.netty.resolver.dns.DnsResolveContext.finishResolve(DnsResolveContext.java:1150) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+	Suppressed: reactor.core.publisher.FluxOnAssembly$OnAssemblyException: 
+Error has been observed at the following site(s):
+	*__checkpoint ? org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? AuthorizationWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? ExceptionTranslationWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? LogoutWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? ServerRequestCacheWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? SecurityContextServerWebExchangeWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? ReactorContextWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? HttpHeaderWriterWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? ServerWebExchangeReactorContextWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? org.springframework.security.web.server.WebFilterChainProxy [DefaultWebFilterChain]
+	*__checkpoint ? org.springframework.web.cors.reactive.CorsWebFilter [DefaultWebFilterChain]
+	*__checkpoint ? HTTP POST "/api/login" [ExceptionHandlingWebHandler]
+Original Stack Trace:
+		at io.netty.resolver.dns.DnsResolveContext.finishResolve(DnsResolveContext.java:1150) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.resolver.dns.DnsResolveContext.tryToFinishResolve(DnsResolveContext.java:1097) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.resolver.dns.DnsResolveContext.query(DnsResolveContext.java:455) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.resolver.dns.DnsResolveContext.onResponse(DnsResolveContext.java:686) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.resolver.dns.DnsResolveContext.access$500(DnsResolveContext.java:70) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.resolver.dns.DnsResolveContext$2.operationComplete(DnsResolveContext.java:513) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:603) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:596) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:572) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:505) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:649) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.concurrent.DefaultPromise.setSuccess0(DefaultPromise.java:638) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.concurrent.DefaultPromise.trySuccess(DefaultPromise.java:118) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.resolver.dns.DnsQueryContext.trySuccess(DnsQueryContext.java:308) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.resolver.dns.DnsQueryContext.finishSuccess(DnsQueryContext.java:299) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.resolver.dns.DnsNameResolver$DnsResponseHandler.channelRead(DnsNameResolver.java:1491) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.handler.codec.MessageToMessageDecoder.channelRead(MessageToMessageDecoder.java:107) ~[netty-codec-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:444) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:412) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1357) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:440) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:420) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:868) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:97) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:796) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562) ~[netty-transport-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30) ~[netty-common-4.1.124.Final.jar:4.1.124.Final]
+		at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+Caused by: io.netty.resolver.dns.DnsErrorCauseException: Query failed with NXDOMAIN
+	at io.netty.resolver.dns.DnsResolveContext.onResponse(..)(Unknown Source) ~[netty-resolver-dns-4.1.124.Final.jar:4.1.124.Final]
+
+2025-09-17T09:54:39.866-05:00 DEBUG 6512 --- [api-gateway] [reactor-http-nio-4] r.n.http.server.HttpServerOperations     : [1a46dda2-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:59451] Last HTTP response frame
+2025-09-17T09:54:39.867-05:00 DEBUG 6512 --- [api-gateway] [reactor-http-nio-4] r.n.http.server.HttpServerOperations     : [1a46dda2-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:59451] Headers are not sent before onComplete().
+2025-09-17T09:54:39.872-05:00 DEBUG 6512 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [1a46dda2-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:59451] Decreasing pending responses count: 0
+2025-09-17T09:54:39.874-05:00 DEBUG 6512 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [1a46dda2-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:59451] Last HTTP packet was sent, terminating the channel
+2025-09-17T11:34:12.254-05:00  INFO 16624 --- [api-gateway] [main] com.proyect.gateway.GatewayApplication   : Starting GatewayApplication using Java 17.0.15 with PID 16624 (C:\Users\EQUIPO 86\Desktop\Mantenimiento\Gateway\gateway\target\classes started by EQUIPO 86 in C:\Users\EQUIPO 86\Desktop\Mantenimiento\Gateway\gateway)
+2025-09-17T11:34:12.261-05:00  INFO 16624 --- [api-gateway] [main] com.proyect.gateway.GatewayApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-09-17T11:34:14.765-05:00  INFO 16624 --- [api-gateway] [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=7e6c1907-d8af-35b6-b91c-e12255db8482
+2025-09-17T11:34:15.507-05:00 DEBUG 16624 --- [api-gateway] [main] s.w.r.r.m.a.RequestMappingHandlerMapping : 1 mappings in 'requestMappingHandlerMapping'
+2025-09-17T11:34:15.754-05:00  WARN 16624 --- [api-gateway] [main] GatewayClassPathWarningAutoConfiguration : 
+
+**********************************************************
+
+The artifact spring-cloud-gateway-server is deprecated. It will be removed in the next major release. Please add spring-cloud-gateway-server-webflux dependency.
+
+**********************************************************
+
+
+2025-09-17T11:34:16.054-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.gateway.config.GatewayProperties   : Routes supplied from Gateway Properties: [RouteDefinition{id='login-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/login/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/login/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://localhost:8090, order=0, metadata={}, enabled=true}, RouteDefinition{id='usuarios-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/usuarios/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/usuarios/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://localhost:8090, order=0, metadata={}, enabled=true}, RouteDefinition{id='roles-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/roles/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/roles/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://localhost:8090, order=0, metadata={}, enabled=true}, RouteDefinition{id='logout-service', predicates=[PredicateDefinition{name='Path', args={_genkey_0=/api/logout/**}}], filters=[FilterDefinition{name='RewritePath', args={_genkey_0=/api/logout/(?<segment>.*), _genkey_1=/${segment}}}], uri=http://localhost:8090, order=0, metadata={}, enabled=true}]
+2025-09-17T11:34:16.248-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2025-09-17T11:34:16.248-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2025-09-17T11:34:16.248-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2025-09-17T11:34:16.249-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2025-09-17T11:34:16.249-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2025-09-17T11:34:16.249-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2025-09-17T11:34:16.249-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2025-09-17T11:34:16.249-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2025-09-17T11:34:16.249-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2025-09-17T11:34:16.250-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2025-09-17T11:34:16.250-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2025-09-17T11:34:16.250-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2025-09-17T11:34:16.251-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2025-09-17T11:34:16.251-05:00  INFO 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2025-09-17T11:34:16.336-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.w.r.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-09-17T11:34:16.674-05:00  INFO 16624 --- [api-gateway] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2025-09-17T11:34:16.727-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.w.r.r.m.a.ControllerMethodResolver   : ControllerAdvice beans: none
+2025-09-17T11:34:16.932-05:00  WARN 16624 --- [api-gateway] [main] s.w.s.StarterDeprecatedAutoConfiguration : 
+
+**********************************************************
+
+spring-cloud-starter-gateway is deprecated. It will be removed in the next major release. Please use spring-cloud-starter-gateway-server-webflux instead.
+
+**********************************************************
+
+
+2025-09-17T11:34:17.224-05:00  INFO 16624 --- [api-gateway] [main] o.s.b.web.embedded.netty.NettyWebServer  : Netty started on port 8080 (http)
+2025-09-17T11:34:17.508-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition login-service applying {_genkey_0=/api/login/**} to Path
+2025-09-17T11:34:17.535-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition login-service applying filter {_genkey_0=/api/login/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T11:34:17.548-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: login-service
+2025-09-17T11:34:17.549-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition usuarios-service applying {_genkey_0=/api/usuarios/**} to Path
+2025-09-17T11:34:17.550-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition usuarios-service applying filter {_genkey_0=/api/usuarios/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T11:34:17.552-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: usuarios-service
+2025-09-17T11:34:17.553-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition roles-service applying {_genkey_0=/api/roles/**} to Path
+2025-09-17T11:34:17.557-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition roles-service applying filter {_genkey_0=/api/roles/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T11:34:17.558-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: roles-service
+2025-09-17T11:34:17.559-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition logout-service applying {_genkey_0=/api/logout/**} to Path
+2025-09-17T11:34:17.561-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition logout-service applying filter {_genkey_0=/api/logout/(?<segment>.*), _genkey_1=/${segment}} to RewritePath
+2025-09-17T11:34:17.563-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.r.RouteDefinitionRouteLocator    : RouteDefinition matched: logout-service
+2025-09-17T11:34:17.569-05:00 DEBUG 16624 --- [api-gateway] [main] o.s.c.g.filter.GatewayMetricsFilter      : New routes count: 4
+2025-09-17T11:34:17.579-05:00  INFO 16624 --- [api-gateway] [main] com.proyect.gateway.GatewayApplication   : Started GatewayApplication in 5.96 seconds (process running for 6.626)
+2025-09-17T11:34:17.590-05:00  WARN 16624 --- [api-gateway] [main] ServerWebfluxPropertiesMigrationListener : 
+The use of configuration keys that have been renamed was found in the environment:
+
+Property source 'Config resource 'class path resource [application.yml]' via location 'optional:classpath:/'':
+	Key: spring.cloud.gateway.routes[0].id
+		Line: 11
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].id
+	Key: spring.cloud.gateway.routes[0].uri
+		Line: 12
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].uri
+	Key: spring.cloud.gateway.routes[0].predicates[0]
+		Line: 14
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].predicates[0]
+	Key: spring.cloud.gateway.routes[0].filters[0]
+		Line: 16
+		Replacement: spring.cloud.gateway.server.webflux.routes[0].filters[0]
+	Key: spring.cloud.gateway.routes[1].id
+		Line: 18
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].id
+	Key: spring.cloud.gateway.routes[1].uri
+		Line: 19
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].uri
+	Key: spring.cloud.gateway.routes[1].predicates[0]
+		Line: 21
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].predicates[0]
+	Key: spring.cloud.gateway.routes[1].filters[0]
+		Line: 23
+		Replacement: spring.cloud.gateway.server.webflux.routes[1].filters[0]
+	Key: spring.cloud.gateway.routes[2].id
+		Line: 25
+		Replacement: spring.cloud.gateway.server.webflux.routes[2].id
+	Key: spring.cloud.gateway.routes[2].uri
+		Line: 26
+		Replacement: spring.cloud.gateway.server.webflux.routes[2].uri
+	Key: spring.cloud.gateway.routes[2].predicates[0]
+		Line: 28
+		Replacement: spring.cloud.gateway.server.webflux.routes[2].predicates[0]
+	Key: spring.cloud.gateway.routes[2].filters[0]
+		Line: 30
+		Replacement: spring.cloud.gateway.server.webflux.routes[2].filters[0]
+	Key: spring.cloud.gateway.routes[3].id
+		Line: 32
+		Replacement: spring.cloud.gateway.server.webflux.routes[3].id
+	Key: spring.cloud.gateway.routes[3].uri
+		Line: 33
+		Replacement: spring.cloud.gateway.server.webflux.routes[3].uri
+	Key: spring.cloud.gateway.routes[3].predicates[0]
+		Line: 35
+		Replacement: spring.cloud.gateway.server.webflux.routes[3].predicates[0]
+	Key: spring.cloud.gateway.routes[3].filters[0]
+		Line: 37
+		Replacement: spring.cloud.gateway.server.webflux.routes[3].filters[0]
+
+
+Each configuration key has been temporarily mapped to its replacement for your convenience. To silence this warning, please update your configuration to use the new keys.
+
+2025-09-17T11:34:55.448-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-2] r.n.http.server.HttpServerOperations     : [c2ff6126, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62706] New http connection, requesting read
+2025-09-17T11:34:55.479-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-2] r.n.http.server.HttpServerOperations     : [c2ff6126, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62706] Increasing pending responses count: 1
+2025-09-17T11:34:55.494-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-2] reactor.netty.http.server.HttpServer     : [c2ff6126-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62706] Handler is being applied: org.springframework.http.server.reactive.ReactorHttpHandlerAdapter@51fd5648
+2025-09-17T11:34:55.564-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-2] r.n.http.server.HttpServerOperations     : [c2ff6126-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62706] Last HTTP response frame
+2025-09-17T11:34:55.565-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-2] r.n.http.server.HttpServerOperations     : [c2ff6126-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62706] Headers are not sent before onComplete().
+2025-09-17T11:34:55.569-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-2] r.n.http.server.HttpServerOperations     : [c2ff6126-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62706] Decreasing pending responses count: 0
+2025-09-17T11:34:55.573-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-2] r.n.http.server.HttpServerOperations     : [c2ff6126-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62706] Last HTTP packet was sent, terminating the channel
+2025-09-17T11:34:55.576-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [216079f0, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62708] New http connection, requesting read
+2025-09-17T11:34:55.581-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [216079f0, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62708] Increasing pending responses count: 1
+2025-09-17T11:34:55.581-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-3] reactor.netty.http.server.HttpServer     : [216079f0-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62708] Handler is being applied: org.springframework.http.server.reactive.ReactorHttpHandlerAdapter@51fd5648
+2025-09-17T11:34:55.645-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+2025-09-17T11:34:55.648-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'POST /logout'
+2025-09-17T11:34:55.649-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T11:34:55.658-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/actuator/health', method=null}
+2025-09-17T11:34:55.660-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'null /actuator/health'
+2025-09-17T11:34:55.661-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T11:34:55.662-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/api/login/**', method=null}
+2025-09-17T11:34:55.663-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] athPatternParserServerWebExchangeMatcher : Checking match of request : '/api/login'; against '/api/login/**'
+2025-09-17T11:34:55.663-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : matched
+2025-09-17T11:34:55.664-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] a.DelegatingReactiveAuthorizationManager : Checking authorization on '/api/login' using org.springframework.security.config.web.server.ServerHttpSecurity$AuthorizeExchangeSpec$Access$$Lambda$856/0x000001af52521170@2f0da28c
+2025-09-17T11:34:55.665-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] o.s.s.w.s.a.AuthorizationWebFilter       : Authorization successful
+2025-09-17T11:34:55.678-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] s.w.r.r.m.a.RequestMappingHandlerMapping : [216079f0-2] Mapped to com.proyect.gateway.controller.LoginGatewayController#login(Map)
+2025-09-17T11:34:55.701-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] .r.m.a.RequestBodyMethodArgumentResolver : [216079f0-2] Content-Type:application/json
+2025-09-17T11:34:55.720-05:00 DEBUG 16624 --- [api-gateway] [parallel-1] .r.m.a.RequestBodyMethodArgumentResolver : [216079f0-2] 0..1 [java.util.Map<java.lang.String, java.lang.Object>]
+2025-09-17T11:34:55.791-05:00  INFO 16624 --- [api-gateway] [reactor-http-nio-3] c.p.g.controller.LoginGatewayController  : Enviando login a: http://login1:8090/api/login1
+2025-09-17T11:34:58.549-05:00  WARN 16624 --- [api-gateway] [reactor-http-nio-3] c.p.g.controller.LoginGatewayController  : Fallo al conectarse a http://login1:8090/api/login1: I/O error on POST request for "http://login1:8090/api/login1": login1
+2025-09-17T11:34:58.550-05:00  INFO 16624 --- [api-gateway] [reactor-http-nio-3] c.p.g.controller.LoginGatewayController  : Enviando login a: http://login2:8090/api/login2
+2025-09-17T11:35:01.239-05:00  WARN 16624 --- [api-gateway] [reactor-http-nio-3] c.p.g.controller.LoginGatewayController  : Fallo al conectarse a http://login2:8090/api/login2: I/O error on POST request for "http://login2:8090/api/login2": login2
+2025-09-17T11:35:01.240-05:00 ERROR 16624 --- [api-gateway] [reactor-http-nio-3] c.p.g.controller.LoginGatewayController  : Todos los servicios de Login están caídos
+2025-09-17T11:35:01.248-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-3] .s.w.r.r.m.a.ResponseEntityResultHandler : [216079f0-2] Using 'application/json' given [application/json, text/plain, */*] and supported [text/plain;charset=UTF-8, text/event-stream, text/plain;charset=UTF-8, */*]
+2025-09-17T11:35:01.248-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-3] .s.w.r.r.m.a.ResponseEntityResultHandler : [216079f0-2] 0..1 [java.lang.String]
+2025-09-17T11:35:01.267-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [216079f0-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62708] Last HTTP response frame
+2025-09-17T11:35:01.268-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [216079f0-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62708] Headers are not sent before onComplete().
+2025-09-17T11:35:01.270-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [216079f0-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62708] Decreasing pending responses count: 0
+2025-09-17T11:35:01.273-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-3] r.n.http.server.HttpServerOperations     : [216079f0-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:62708] Last HTTP packet was sent, terminating the channel
+2025-09-17T11:36:51.352-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-4] r.n.http.server.HttpServerOperations     : [10381367, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53025] New http connection, requesting read
+2025-09-17T11:36:51.367-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-4] r.n.http.server.HttpServerOperations     : [10381367, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53025] Increasing pending responses count: 1
+2025-09-17T11:36:51.369-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-4] reactor.netty.http.server.HttpServer     : [10381367-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53025] Handler is being applied: org.springframework.http.server.reactive.ReactorHttpHandlerAdapter@51fd5648
+2025-09-17T11:36:51.385-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-4] r.n.http.server.HttpServerOperations     : [10381367-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53025] Last HTTP response frame
+2025-09-17T11:36:51.386-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-4] r.n.http.server.HttpServerOperations     : [10381367-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53025] Headers are not sent before onComplete().
+2025-09-17T11:36:51.387-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-4] r.n.http.server.HttpServerOperations     : [10381367-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53025] Decreasing pending responses count: 0
+2025-09-17T11:36:51.388-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-4] r.n.http.server.HttpServerOperations     : [10381367-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53025] Last HTTP packet was sent, terminating the channel
+2025-09-17T11:36:51.392-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-5] r.n.http.server.HttpServerOperations     : [4e998d44, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53026] New http connection, requesting read
+2025-09-17T11:36:51.395-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-5] r.n.http.server.HttpServerOperations     : [4e998d44, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53026] Increasing pending responses count: 1
+2025-09-17T11:36:51.396-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-5] reactor.netty.http.server.HttpServer     : [4e998d44-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53026] Handler is being applied: org.springframework.http.server.reactive.ReactorHttpHandlerAdapter@51fd5648
+2025-09-17T11:36:51.411-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+2025-09-17T11:36:51.413-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'POST /logout'
+2025-09-17T11:36:51.413-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T11:36:51.415-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/actuator/health', method=null}
+2025-09-17T11:36:51.415-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'null /actuator/health'
+2025-09-17T11:36:51.416-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T11:36:51.416-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/api/login/**', method=null}
+2025-09-17T11:36:51.417-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] athPatternParserServerWebExchangeMatcher : Checking match of request : '/api/login'; against '/api/login/**'
+2025-09-17T11:36:51.417-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : matched
+2025-09-17T11:36:51.418-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] a.DelegatingReactiveAuthorizationManager : Checking authorization on '/api/login' using org.springframework.security.config.web.server.ServerHttpSecurity$AuthorizeExchangeSpec$Access$$Lambda$856/0x000001af52521170@2f0da28c
+2025-09-17T11:36:51.419-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] o.s.s.w.s.a.AuthorizationWebFilter       : Authorization successful
+2025-09-17T11:36:51.425-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] s.w.r.r.m.a.RequestMappingHandlerMapping : [4e998d44-4] Mapped to com.proyect.gateway.controller.LoginGatewayController#login(Map)
+2025-09-17T11:36:51.432-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] .r.m.a.RequestBodyMethodArgumentResolver : [4e998d44-4] Content-Type:application/json
+2025-09-17T11:36:51.435-05:00 DEBUG 16624 --- [api-gateway] [parallel-2] .r.m.a.RequestBodyMethodArgumentResolver : [4e998d44-4] 0..1 [java.util.Map<java.lang.String, java.lang.Object>]
+2025-09-17T11:36:51.441-05:00  INFO 16624 --- [api-gateway] [reactor-http-nio-5] c.p.g.controller.LoginGatewayController  : Enviando login a: http://login1:8090/api/login1
+2025-09-17T11:36:54.156-05:00  WARN 16624 --- [api-gateway] [reactor-http-nio-5] c.p.g.controller.LoginGatewayController  : Fallo al conectarse a http://login1:8090/api/login1: I/O error on POST request for "http://login1:8090/api/login1": login1
+2025-09-17T11:36:54.156-05:00  INFO 16624 --- [api-gateway] [reactor-http-nio-5] c.p.g.controller.LoginGatewayController  : Enviando login a: http://login2:8090/api/login2
+2025-09-17T11:36:56.855-05:00  WARN 16624 --- [api-gateway] [reactor-http-nio-5] c.p.g.controller.LoginGatewayController  : Fallo al conectarse a http://login2:8090/api/login2: I/O error on POST request for "http://login2:8090/api/login2": login2
+2025-09-17T11:36:56.855-05:00 ERROR 16624 --- [api-gateway] [reactor-http-nio-5] c.p.g.controller.LoginGatewayController  : Todos los servicios de Login están caídos
+2025-09-17T11:36:56.859-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-5] .s.w.r.r.m.a.ResponseEntityResultHandler : [4e998d44-4] Using 'application/json' given [application/json, text/plain, */*] and supported [text/plain;charset=UTF-8, text/event-stream, text/plain;charset=UTF-8, */*]
+2025-09-17T11:36:56.859-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-5] .s.w.r.r.m.a.ResponseEntityResultHandler : [4e998d44-4] 0..1 [java.lang.String]
+2025-09-17T11:36:56.863-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-5] r.n.http.server.HttpServerOperations     : [4e998d44-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53026] Last HTTP response frame
+2025-09-17T11:36:56.863-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-5] r.n.http.server.HttpServerOperations     : [4e998d44-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53026] Headers are not sent before onComplete().
+2025-09-17T11:36:56.867-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-5] r.n.http.server.HttpServerOperations     : [4e998d44-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53026] Decreasing pending responses count: 0
+2025-09-17T11:36:56.867-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-5] r.n.http.server.HttpServerOperations     : [4e998d44-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:53026] Last HTTP packet was sent, terminating the channel
+2025-09-17T11:39:23.144-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-6] r.n.http.server.HttpServerOperations     : [ec8f35ba, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54579] New http connection, requesting read
+2025-09-17T11:39:23.152-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-6] r.n.http.server.HttpServerOperations     : [ec8f35ba, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54579] Increasing pending responses count: 1
+2025-09-17T11:39:23.153-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-6] reactor.netty.http.server.HttpServer     : [ec8f35ba-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54579] Handler is being applied: org.springframework.http.server.reactive.ReactorHttpHandlerAdapter@51fd5648
+2025-09-17T11:39:23.161-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-6] r.n.http.server.HttpServerOperations     : [ec8f35ba-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54579] Last HTTP response frame
+2025-09-17T11:39:23.161-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-6] r.n.http.server.HttpServerOperations     : [ec8f35ba-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54579] Headers are not sent before onComplete().
+2025-09-17T11:39:23.162-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-6] r.n.http.server.HttpServerOperations     : [ec8f35ba-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54579] Decreasing pending responses count: 0
+2025-09-17T11:39:23.163-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-6] r.n.http.server.HttpServerOperations     : [ec8f35ba-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54579] Last HTTP packet was sent, terminating the channel
+2025-09-17T11:39:23.169-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-7] r.n.http.server.HttpServerOperations     : [618c83d8, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54580] New http connection, requesting read
+2025-09-17T11:39:23.173-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-7] r.n.http.server.HttpServerOperations     : [618c83d8, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54580] Increasing pending responses count: 1
+2025-09-17T11:39:23.174-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-7] reactor.netty.http.server.HttpServer     : [618c83d8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54580] Handler is being applied: org.springframework.http.server.reactive.ReactorHttpHandlerAdapter@51fd5648
+2025-09-17T11:39:23.181-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+2025-09-17T11:39:23.182-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'POST /logout'
+2025-09-17T11:39:23.183-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T11:39:23.184-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/actuator/health', method=null}
+2025-09-17T11:39:23.186-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'null /actuator/health'
+2025-09-17T11:39:23.187-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T11:39:23.188-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/api/login/**', method=null}
+2025-09-17T11:39:23.190-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] athPatternParserServerWebExchangeMatcher : Checking match of request : '/api/login'; against '/api/login/**'
+2025-09-17T11:39:23.190-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : matched
+2025-09-17T11:39:23.191-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] a.DelegatingReactiveAuthorizationManager : Checking authorization on '/api/login' using org.springframework.security.config.web.server.ServerHttpSecurity$AuthorizeExchangeSpec$Access$$Lambda$856/0x000001af52521170@2f0da28c
+2025-09-17T11:39:23.191-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] o.s.s.w.s.a.AuthorizationWebFilter       : Authorization successful
+2025-09-17T11:39:23.194-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] s.w.r.r.m.a.RequestMappingHandlerMapping : [618c83d8-6] Mapped to com.proyect.gateway.controller.LoginGatewayController#login(Map)
+2025-09-17T11:39:23.198-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] .r.m.a.RequestBodyMethodArgumentResolver : [618c83d8-6] Content-Type:application/json
+2025-09-17T11:39:23.200-05:00 DEBUG 16624 --- [api-gateway] [parallel-3] .r.m.a.RequestBodyMethodArgumentResolver : [618c83d8-6] 0..1 [java.util.Map<java.lang.String, java.lang.Object>]
+2025-09-17T11:39:23.204-05:00  INFO 16624 --- [api-gateway] [reactor-http-nio-7] c.p.g.controller.LoginGatewayController  : Enviando login a: http://login1:8090/api/login1
+2025-09-17T11:39:25.918-05:00  WARN 16624 --- [api-gateway] [reactor-http-nio-7] c.p.g.controller.LoginGatewayController  : Fallo al conectarse a http://login1:8090/api/login1: I/O error on POST request for "http://login1:8090/api/login1": login1
+2025-09-17T11:39:25.919-05:00  INFO 16624 --- [api-gateway] [reactor-http-nio-7] c.p.g.controller.LoginGatewayController  : Enviando login a: http://login2:8090/api/login2
+2025-09-17T11:39:28.624-05:00  WARN 16624 --- [api-gateway] [reactor-http-nio-7] c.p.g.controller.LoginGatewayController  : Fallo al conectarse a http://login2:8090/api/login2: I/O error on POST request for "http://login2:8090/api/login2": login2
+2025-09-17T11:39:28.624-05:00 ERROR 16624 --- [api-gateway] [reactor-http-nio-7] c.p.g.controller.LoginGatewayController  : Todos los servicios de Login están caídos
+2025-09-17T11:39:28.627-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-7] .s.w.r.r.m.a.ResponseEntityResultHandler : [618c83d8-6] Using 'application/json' given [application/json, text/plain, */*] and supported [text/plain;charset=UTF-8, text/event-stream, text/plain;charset=UTF-8, */*]
+2025-09-17T11:39:28.627-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-7] .s.w.r.r.m.a.ResponseEntityResultHandler : [618c83d8-6] 0..1 [java.lang.String]
+2025-09-17T11:39:28.628-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-7] r.n.http.server.HttpServerOperations     : [618c83d8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54580] Last HTTP response frame
+2025-09-17T11:39:28.628-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-7] r.n.http.server.HttpServerOperations     : [618c83d8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54580] Headers are not sent before onComplete().
+2025-09-17T11:39:28.628-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-7] r.n.http.server.HttpServerOperations     : [618c83d8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54580] Decreasing pending responses count: 0
+2025-09-17T11:39:28.628-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-7] r.n.http.server.HttpServerOperations     : [618c83d8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54580] Last HTTP packet was sent, terminating the channel
+2025-09-17T11:39:37.055-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-8] r.n.http.server.HttpServerOperations     : [603bb002, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54599] New http connection, requesting read
+2025-09-17T11:39:37.057-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-1] r.n.http.server.HttpServerOperations     : [0a9f42c8, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54600] New http connection, requesting read
+2025-09-17T11:39:37.063-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-1] r.n.http.server.HttpServerOperations     : [0a9f42c8, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54600] Increasing pending responses count: 1
+2025-09-17T11:39:37.064-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-1] reactor.netty.http.server.HttpServer     : [0a9f42c8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54600] Handler is being applied: org.springframework.http.server.reactive.ReactorHttpHandlerAdapter@51fd5648
+2025-09-17T11:39:37.070-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/logout', method=POST}
+2025-09-17T11:39:37.070-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'POST /logout'
+2025-09-17T11:39:37.070-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T11:39:37.071-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/actuator/health', method=null}
+2025-09-17T11:39:37.072-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] athPatternParserServerWebExchangeMatcher : Request 'POST /api/login' doesn't match 'null /actuator/health'
+2025-09-17T11:39:37.072-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : No matches found
+2025-09-17T11:39:37.072-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : Trying to match using PathMatcherServerWebExchangeMatcher{pattern='/api/login/**', method=null}
+2025-09-17T11:39:37.073-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] athPatternParserServerWebExchangeMatcher : Checking match of request : '/api/login'; against '/api/login/**'
+2025-09-17T11:39:37.073-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] o.s.s.w.s.u.m.OrServerWebExchangeMatcher : matched
+2025-09-17T11:39:37.073-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] a.DelegatingReactiveAuthorizationManager : Checking authorization on '/api/login' using org.springframework.security.config.web.server.ServerHttpSecurity$AuthorizeExchangeSpec$Access$$Lambda$856/0x000001af52521170@2f0da28c
+2025-09-17T11:39:37.074-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] o.s.s.w.s.a.AuthorizationWebFilter       : Authorization successful
+2025-09-17T11:39:37.075-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] s.w.r.r.m.a.RequestMappingHandlerMapping : [0a9f42c8-7] Mapped to com.proyect.gateway.controller.LoginGatewayController#login(Map)
+2025-09-17T11:39:37.077-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] .r.m.a.RequestBodyMethodArgumentResolver : [0a9f42c8-7] Content-Type:application/json
+2025-09-17T11:39:37.077-05:00 DEBUG 16624 --- [api-gateway] [parallel-4] .r.m.a.RequestBodyMethodArgumentResolver : [0a9f42c8-7] 0..1 [java.util.Map<java.lang.String, java.lang.Object>]
+2025-09-17T11:39:37.079-05:00  INFO 16624 --- [api-gateway] [reactor-http-nio-1] c.p.g.controller.LoginGatewayController  : Enviando login a: http://login1:8090/api/login1
+2025-09-17T11:39:39.783-05:00  WARN 16624 --- [api-gateway] [reactor-http-nio-1] c.p.g.controller.LoginGatewayController  : Fallo al conectarse a http://login1:8090/api/login1: I/O error on POST request for "http://login1:8090/api/login1": login1
+2025-09-17T11:39:39.784-05:00  INFO 16624 --- [api-gateway] [reactor-http-nio-1] c.p.g.controller.LoginGatewayController  : Enviando login a: http://login2:8090/api/login2
+2025-09-17T11:39:42.473-05:00  WARN 16624 --- [api-gateway] [reactor-http-nio-1] c.p.g.controller.LoginGatewayController  : Fallo al conectarse a http://login2:8090/api/login2: I/O error on POST request for "http://login2:8090/api/login2": login2
+2025-09-17T11:39:42.476-05:00 ERROR 16624 --- [api-gateway] [reactor-http-nio-1] c.p.g.controller.LoginGatewayController  : Todos los servicios de Login están caídos
+2025-09-17T11:39:42.482-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-1] .s.w.r.r.m.a.ResponseEntityResultHandler : [0a9f42c8-7] Using 'text/plain;charset=UTF-8' given [*/*] and supported [text/plain;charset=UTF-8, text/event-stream, text/plain;charset=UTF-8, */*]
+2025-09-17T11:39:42.483-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-1] .s.w.r.r.m.a.ResponseEntityResultHandler : [0a9f42c8-7] 0..1 [java.lang.String]
+2025-09-17T11:39:42.485-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-1] r.n.http.server.HttpServerOperations     : [0a9f42c8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54600] Last HTTP response frame
+2025-09-17T11:39:42.486-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-1] r.n.http.server.HttpServerOperations     : [0a9f42c8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54600] Headers are not sent before onComplete().
+2025-09-17T11:39:42.488-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-1] r.n.http.server.HttpServerOperations     : [0a9f42c8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54600] Decreasing pending responses count: 0
+2025-09-17T11:39:42.489-05:00 DEBUG 16624 --- [api-gateway] [reactor-http-nio-1] r.n.http.server.HttpServerOperations     : [0a9f42c8-1, L:/[0:0:0:0:0:0:0:1]:8080 - R:/[0:0:0:0:0:0:0:1]:54600] Last HTTP packet was sent, terminating the channel
