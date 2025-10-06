@@ -1,0 +1,110 @@
+<!-- Lista de usuarios -->
+<!-- Contenedor principal con margen superior y ancho máximo -->
+<div class="container my-5" style="max-width: 1200px;">
+
+  <!-- Título de la sección -->
+  <div class="mb-4">
+    <h4 class="text-start text-dark fw-semibold">Gestión de Usuarios</h4>
+  </div>
+
+  <!-- Barra superior: buscador y botón de crear -->
+  <div class="d-flex justify-content-end align-items-center mb-4 gap-4">
+    <!-- Input para buscar usuarios por nombre o rol -->
+    <div class="flex-grow-1" style="max-width: 300px;">
+      <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Buscar por nombre o rol"
+        (input)="onSearchChange()">
+    </div>
+    <!-- Botón que redirige a la vista de creación de usuarios -->
+    <button class="btn btn-success" routerLink="/superadmin/usuarios/crear">
+      <i class="fas fa-plus me-2"></i>Crear Usuario
+    </button>
+  </div>
+
+  <!-- Mensajes de éxito o error -->
+  <div *ngIf="mensaje" class="alert"
+    [ngClass]="{'alert-success': mensajeTipo === 'success', 'alert-danger': mensajeTipo === 'error'}">
+    {{ mensaje }}
+  </div>
+
+  <!-- Confirmación de eliminación -->
+  <div *ngIf="usuarioToDelete" class="alert alert-warning d-flex justify-content-between align-items-center">
+    <span>¿Seguro que quieres eliminar el usuario "{{ usuarioToDelete.nombreUsuario }}"?</span>
+    <div>
+      <button class="btn btn-danger btn-sm me-2" (click)="confirmDeleteUsuario()">Sí, eliminar</button>
+      <button class="btn btn-secondary btn-sm" (click)="cancelDeleteUsuario()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Tabla de usuarios -->
+  <div class="table-responsive shadow-sm rounded-3">
+    <table class="table table-hover align-middle mb-0 text-center">
+
+      <!-- Encabezado de la tabla -->
+      <thead class="table text-dark">
+        <tr>
+          <th class="py-3 text-start ps-4" style="background-color: #252772;color:white;width:25%">Rol</th>
+          <th class="py-3 text-start ps-4" style="background-color: #252772;color:white;width:25%">Nombre de usuario
+          </th>
+          <th class="py-3 text-start ps-4" style="background-color: #252772;color:white;width:20%">Clave</th>
+          <th class="py-3 pe-4 text-end" style="background-color: #252772;color:white;width:9%">Acciones</th>
+        </tr>
+      </thead>
+
+      <!-- Cuerpo de la tabla -->
+      <tbody>
+        <!-- Se recorre la lista de usuarios con paginación -->
+        <tr *ngFor="let user of usuarios | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+          class="shadow-sm rounded-3 mb-2">
+
+          <!-- Modo edición: si el usuario actual está en edición -->
+          <ng-container *ngIf="editingUsuario?.idUsuarios === user.idUsuarios; else viewRow">
+            <!-- Select para cambiar rol -->
+            <td class="text-start ps-4">
+              <select [(ngModel)]="editingUsuario.idRol" name="editRol" class="form-select form-select-sm">
+                <option *ngFor="let rol of rolesFiltrados" [ngValue]="rol.idRol">{{ rol.nombreRol }}</option>
+              </select>
+            </td>
+            <!-- Input para cambiar nombre -->
+            <td class="text-start ps-4">
+              <input [(ngModel)]="editingUsuario.nombreUsuario" name="editNombre"
+                class="form-control form-control-sm" />
+            </td>
+            <!-- Input para cambiar clave (oculta o visible según showEditPassword) -->
+            <td class="text-start ps-4">
+              <input [type]="showEditPassword ? 'text' : 'password'" [(ngModel)]="editingUsuario.clave" name="editClave"
+                class="form-control form-control-sm" />
+            </td>
+            <!-- Iconos para guardar o cancelar -->
+            <td class="text-end pe-4">
+              <div class="d-inline-flex gap-2">
+                <i class="fas fa-save text-success cursor-pointer" (click)="updateUsuario()"></i>
+                <i class="fas fa-times text-danger cursor-pointer" (click)="cancelEditUsuario()"></i>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Vista normal (no edición) -->
+          <ng-template #viewRow>
+            <td class="text-start ps-4">{{ user.rolesModel?.nombreRol || 'Sin rol' }}</td>
+            <td class="text-start ps-4 text-dark">{{ user.nombreUsuario }}</td>
+            <td class="text-start ps-4 text-muted">••••••••</td>
+            <td class="text-end pe-4">
+              <div class="d-inline-flex gap-3">
+                <!-- Icono para editar -->
+                <i class="fas fa-pencil-alt text-primary cursor-pointer" (click)="editUsuario(user)"></i>
+                <!-- Icono para borrar -->
+                <i class="fas fa-trash text-danger cursor-pointer" (click)="deleteUsuario(user)"></i>
+              </div>
+            </td>
+          </ng-template>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Controles de paginación -->
+  <div class="d-flex justify-content-center mt-4">
+    <pagination-controls (pageChange)="currentPage = $event" previousLabel="Anterior" nextLabel="Siguiente"
+      class="my-pagination"></pagination-controls>
+  </div>
+</div>

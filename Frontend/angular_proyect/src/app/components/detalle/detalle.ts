@@ -24,14 +24,14 @@ export class Detalle implements OnInit {      // Clase del componente que implem
   // Metodo del ciclo de vida que se ejecuta al iniciar el componente
   ngOnInit(): void {
     // Obtener el parámetro 'nombre' desde la URL
-    const maquina = this.route.snapshot.paramMap.get('maquina');
+    const nombre = this.route.snapshot.paramMap.get('nombre');
 
     // Si se encuentra un nombre en la URL
-    if (maquina) {
+    if (nombre) {
       // Llamar al servicio para obtener la lista de herramientas
       this.herramientaService.listar().subscribe(herramientas => {
         // Buscar la herramienta cuyo nombre coincida con el parámetro (sin distinguir mayúsculas/minúsculas)
-        this.herramienta = herramientas.find(h => h.maquina.toLowerCase() === maquina.toLowerCase());
+        this.herramienta = herramientas.find(h => h.nombre.toLowerCase() === nombre.toLowerCase());
       });
     }
   }
@@ -39,6 +39,6 @@ export class Detalle implements OnInit {      // Clase del componente que implem
   // Método que construye la URL de la imagen desde el nombre del archivo
 getImagenUrl(nombreArchivo: string): string {
   return `http://localhost:8080/api/herramientas/uploads/${nombreArchivo}`;
-}
+} 
 
 }

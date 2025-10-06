@@ -25,8 +25,12 @@ export class RolService {
     return this.http.put(`${this.apiUrl}/${rol.idRol}`, rol, { withCredentials: true });
   }
 
-  deleteRol(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`, { withCredentials: true });
-  }
+deleteRol(id: number): Observable<any> {
+  return this.http.delete(`${this.apiUrl}/${id}`, { 
+    withCredentials: true, 
+    responseType: 'text' 
+  });
+}
+
 }
 

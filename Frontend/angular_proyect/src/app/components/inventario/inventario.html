@@ -1,68 +1,99 @@
-<!-- Título del inventario -->
-<div class="d-flex justify-content-start mb-3" style="max-width: 900px; margin: 0 auto;">
-  <h4 class="mb-0" style="color:#495057">Inventario de Herramientas</h4>
+<div class="container my-5" style="max-width: 1200px;">
+  <!-- 🔹 Título principal y acción -->
+     <div class="mb-4">
+    <h4 class="text-start text-dark fw-semibold">Herramientas</h4>
+  </div>
+
+  <div class="d-flex justify-content-end align-items-center mb-4 gap-4">
+<div  class="flex-grow-1" style="max-width: 300px;">
+  <input [(ngModel)]="filtro"
+         (ngModelChange)="onBuscarChange($event)"
+         placeholder="Buscar por nombre o categoría"
+         class="form-control me-2">
 </div>
 
-<!-- Tabla de herramientas con estilo de tarjeta -->
-<div class="card mx-auto shadow mb-5" style="max-width: 1000px; border-radius: 0;">
-  <div class="card-body p-0">
-    <table class="table mb-0">
-      <thead>
-        <tr class="text-start fs-6">
-          <th class="fw-semibold"
-            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
-            Nombre</th>
-          <th class="fw-semibold"
-            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
-            Categoría</th>
-          <th class="fw-semibold text-center"
-            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
-            Codigo</th>
-            <th class="fw-semibold text-center"
-            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
-            Modelo</th>
-            <th class="fw-semibold text-center"
-            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
-            Serie</th>
-            <th class="fw-semibold text-center"
-            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
-            Marca</th>
-            <th class="fw-semibold text-center"
-            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
-            Color</th>
-            <th class="fw-semibold text-center"
-            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
-            Ubicación</th>
-            <th class="fw-semibold text-center"
-            style="width: 20%; height: 60px; vertical-align: middle; color: white; background-color: rgb(37, 37, 119);">
-            Acción</th>
+    <a routerLink="/superadmin/herramientas" class="btn btn-success ">
+      <i class="fas fa-plus me-2"></i> Crear Herramienta
+    </a>
+    
+  </div>
+
+<!-- 🔹 Alerta de éxito/error -->
+<div *ngIf="mensaje" class="alert text-start py-2" [ngClass]="mensajeTipo" role="alert">
+  {{ mensaje }}
+</div>
+
+
+  <!-- 🔹 Tabla moderna -->
+  <div class="table-responsive shadow-sm rounded-3">
+    <table class="table table-hover align-middle mb-0 text-center">
+      <thead class="table-primary text-dark">
+        <tr>
+          <th class="py-3"style="background-color: #252772;color:white">Categoría</th>
+          <th class="py-3"style="background-color: #252772;color:white">Nombre</th>
+          <th class="py-3"style="background-color: #252772;color:white">Código</th>
+          <th class="py-3"style="background-color: #252772;color:white">Modelo</th>
+          <th class="py-3"style="background-color: #252772;color:white">Serie</th>
+          <th class="py-3"style="background-color: #252772;color:white">Marca</th>
+          <th class="py-3"style="background-color: #252772;color:white">Color</th>
+          <th class="py-3"style="background-color: #252772;color:white">Ubicación</th>
+          <th class="py-3"style="background-color: #252772;color:white">Acción</th>
         </tr>
-        
       </thead>
       <tbody>
-        <tr *ngFor="let herramienta of herramientas">
-          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.maquina }}</td>
-          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.categoria }}</td>
-          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.codigo }}</td>
-          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.modelo }}</td>
-          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.serie }}</td>
-          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.marca }}</td>
-          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.color }}</td>
-          <td class="text-muted" style="height: 90px; vertical-align: middle;">{{ herramienta.ubicacion }}</td>
-
-          <td class="text-center" style="height: 90px; vertical-align: middle;">
-            <div class="d-inline-flex gap-2">
-              <a [routerLink]="['/superadmin/herramientas', herramienta.maquina]"
-                class="btn btn-primary btn-sm rounded-circle"
-                style="width: 34px; height: 34px; background-color: rgb(37, 37, 119); border: none;">
-                <i class="fas fa-eye"></i>
-              </a>
-
-
-            </div>
+        <tr *ngFor="let herramienta of herramientas | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="shadow-sm rounded-3 mb-2">
+          <td>{{ herramienta.categoria }}</td>
+          <td>{{ herramienta.nombre }}</td>
+          <td>{{ herramienta.codigo }}</td>
+          <td>{{ herramienta.modelo }}</td>
+          <td>{{ herramienta.serie }}</td>
+          <td>{{ herramienta.marca }}</td>
+          <td>{{ herramienta.color }}</td>
+          <td>{{ herramienta.ubicacion }}</td>
+          <td>
+            <a [routerLink]="['/superadmin/herramientas', herramienta.nombre]" class="text-primary fs-5">
+              <i class="fas fa-eye"></i>
+            </a>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
+
+  <!-- 🔹 Paginación -->
+  <div class="d-flex justify-content-center mt-4">
+    <pagination-controls
+      (pageChange)="currentPage = $event"
+      [previousLabel]="'Anterior'"
+      [nextLabel]="'Siguiente'"
+      [autoHide]="false">
+    </pagination-controls>
+  </div>
 </div>
+
+<style>
+.table-hover tbody tr {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.table-hover tbody tr:hover {
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background-color: #f8f9fa !important;
+}
+
+.table thead {
+  border-bottom: 2px solid #dee2e6;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08) !important;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.fs-5 {
+  font-size: 1.1rem;
+}
+</style>

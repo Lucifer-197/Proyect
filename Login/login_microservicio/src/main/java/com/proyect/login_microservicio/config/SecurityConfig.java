@@ -27,9 +27,9 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            // 
+            
             .csrf(csrf -> csrf.disable())
-
+            .httpBasic(httpBasic -> httpBasic.disable())
             // Stateless (JWT)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 

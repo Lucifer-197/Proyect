@@ -6,8 +6,10 @@ import { Login } from './components/login/login';
 import { SuperAdmin } from './components/superAdmin/superAdmin';
 import { Home } from './components/home/home';
 import { AuthGuard } from './guards/guard'; // Este es el guardia que impide el acceso sin autorización.
-import { Rol } from './components/rol/rol';
-import { Usuario } from './components/usuarios/usuario';
+import { RolLista } from './components/rol/rolLista';
+import { RolCrear } from './components/rol/rolCrear';
+import { UsuarioCrear } from './components/usuarios/usuarioCrear';
+import { UsuarioLista } from './components/usuarios/usuarioLista';
 import { Bienvenida } from './components/superAdmin/bienvenida';
 import { Herramienta } from './components/herramienta/herramienta';
 import { Inventario } from './components/inventario/inventario';
@@ -33,13 +35,15 @@ export const routes: Routes = [
     // Hijas del superadmin (se muestran dentro del componente <router-outlet> del SuperAdmin)
     children: [
       { path: '', component: Bienvenida },       // Ruta por defecto si solo vas a /superadmin
-      { path: 'roles', component: Rol },         // Ruta para gestión de roles
-      { path: 'usuarios', component: Usuario },  // Ruta para gestión de usuarios
+      { path: 'roles', component: RolLista },
+         { path: 'roles/crear', component: RolCrear },           // Ruta para gestión de roles
+      { path: 'usuarios', component: UsuarioLista },  // Ruta para gestión de usuarios
+       { path: 'usuarios/crear', component: UsuarioCrear },
       { path: 'herramientas', component: Herramienta }, // Ruta para listado de herramientas
       { path: 'inventario', component: Inventario },     // Ruta para el módulo de inventario
 
       // Ruta dinámica para mostrar los detalles de una herramienta según su nombre.
-      { path: 'herramientas/:maquina', component: Detalle }
+      { path: 'herramientas/:nombre', component: Detalle }
     ]
   },
 ];

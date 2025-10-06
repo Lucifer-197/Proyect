@@ -1,0 +1,40 @@
+<div class="container my-5" style="max-width: 600px;">
+  <div class="card shadow-sm rounded-4">
+
+    <div class="card-header text-center text-white" style="background-color: #252772;">
+      <h5 class="mb-0">Crear Rol</h5>
+    </div>
+
+    <div class="card-body p-4">
+      <form #rolForm="ngForm" (ngSubmit)="crearRol(rolForm)" autocomplete="off">
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Nombre</label>
+          <input type="text" class="form-control" [(ngModel)]="nuevoRol.nombre" name="nombre" required
+            #nombreInput="ngModel">
+          <div *ngIf="nombreInput.invalid && nombreInput.touched" class="text-danger mt-1">
+            El nombre es obligatorio
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Descripción</label>
+          <textarea class="form-control" [(ngModel)]="nuevoRol.descripcion" name="descripcion" required
+            #descInput="ngModel"></textarea>
+          <div *ngIf="descInput.invalid && descInput.touched" class="text-danger mt-1">
+            La descripción es obligatoria
+          </div>
+        </div>
+
+        <div class="d-grid mt-3">
+          <button type="submit" class="btn btn-success">Crear Rol</button>
+        </div>
+      </form>
+
+      <!-- Mensaje local de error -->
+      <div *ngIf="mensaje" class="alert mt-3 text-center" [ngClass]="mensajeTipo">
+        {{ mensaje }}
+      </div>
+    </div>
+  </div>
+</div>

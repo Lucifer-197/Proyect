@@ -19,4 +19,10 @@ public class InventarioController {
     public List<ModelHerramienta> listarInventario() {
         return serviceHerramienta.listar();
     }
+    @GetMapping("/buscar")
+public List<ModelHerramienta> buscarHerramientas(@RequestParam String filtro) {
+    return serviceHerramienta.buscarHerramientas(filtro);
+}
+
+
 }

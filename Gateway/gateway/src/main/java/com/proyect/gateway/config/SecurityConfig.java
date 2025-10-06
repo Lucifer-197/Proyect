@@ -5,33 +5,47 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
+import reactor.core.publisher.Mono;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Configuration
-@EnableWebFluxSecurity //Activa segurudad WebFlux
+@EnableWebFluxSecurity // Activa seguridad WebFlux
 public class SecurityConfig {
 
-    //Filtro de seguridad, controla como se
     @Bean
     public SecurityWebFilterChain securityFilterChain(ServerHttpSecurity http,
-                                                      JwtSecurityContextRepository contextRepository) {
+            JwtSecurityContextRepository contextRepository) {
         return http
-                 // Desactivar mecanismo de segurudad que no usan APIs
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .httpBasic(ServerHttpSecurity.HttpBasicSpec::disable)
                 .formLogin(ServerHttpSecurity.FormLoginSpec::disable)
-                .securityContextRepository(contextRepository) // JWT desde cookies
+
+                .securityContextRepository(contextRepository)
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((exchange, e) -> {
+                            var response = exchange.getResponse();
+                            response.setStatusCode(HttpStatus.UNAUTHORIZED);
+                            response.getHeaders().set("Content-Type", "application/json");
+
+                            String body = "{\"error\":\"Unauthorized - JWT token required\"}";
+                            byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
+
+                            return response.writeWith(
+                                    Mono.just(response.bufferFactory().wrap(bytes))
+                            );
+                        })
+                )
                 .authorizeExchange(exchange -> exchange
-                        // Configuracion rutas
                         .pathMatchers("/api/login/**", "/api/register/**", "/api/refresh-token/**").permitAll()
-                         // Rutas que requieren SUPER_ADMIN
                         .anyExchange().authenticated()
                 )
                 .build();
@@ -39,7 +53,7 @@ public class SecurityConfig {
 
     // CORS global
     @Bean
-    @Order(Ordered.HIGHEST_PRECEDENCE) // Se aplique antes que
+    @Order(Ordered.HIGHEST_PRECEDENCE)
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of("http://localhost:4200"));

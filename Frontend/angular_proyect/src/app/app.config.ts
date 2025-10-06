@@ -11,7 +11,7 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 // ✨ Importa tu interceptor
-import { Interceptor } from './interceptor'; // ✅ Asegúrate que la ruta sea correcta
+import { AuthInterceptor} from './interceptor'; // ✅ Asegúrate que la ruta sea correcta
 
 // Exporta una constante de configuración de la aplicación Angular
 export const appConfig: ApplicationConfig = {
@@ -20,6 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     // ✨ Configura HttpClient para usar tu interceptor
-    provideHttpClient(withInterceptors([Interceptor]))
+    provideHttpClient(withInterceptors([AuthInterceptor])),
   ]
 };

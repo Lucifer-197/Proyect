@@ -1,17 +1,25 @@
+/* Formulario para crear una nueva herramienta, recibs datos necesariso
+permite subir una imagen, genera un codigo dsde back, valida el 
+formulario y validacion de la imagen */
+
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { HerramientaService } from '../../services/herramienta';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common'; 
+import { MessageService } from '../../services/mensaje';
 
 @Component({
   selector: 'app-crear-herramienta',
   templateUrl: './herramienta.html',
   standalone: true,
-  imports: [FormsModule]
+  imports: [FormsModule, CommonModule]
 })
 export class Herramienta {
 
   @ViewChild('fileInput') fileInput!: ElementRef;
-
+ 
+  // Campos para el formulario de crear herremienta
   nombre = '';
   categoria = '';
   modelo = '';
@@ -21,9 +29,14 @@ export class Herramienta {
   ubicacion = '';
   codigo = '';
   file!: File;
-  errorMessage = '';
 
-  constructor(private herramientaService: HerramientaService) {}
+  //Inyeccion de servicios
+  imagenInvalida = false;
+  constructor(
+    private herramientaService: HerramientaService, 
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   generarCodigo() {
     if (this.nombre && this.categoria) {
@@ -31,7 +44,7 @@ export class Herramienta {
         next: (codigoGenerado) => { this.codigo = codigoGenerado; },
         error: (err) => {
           console.error('Error generando código:', err);
-          this.errorMessage = err.error?.error || 'No se pudo generar el código';
+          this.messageService.setMessage(err.error?.error || 'No se pudo generar el código', 'error');
         }
       });
     }
@@ -39,19 +52,22 @@ export class Herramienta {
 
   onFileSelected(event: any) {
     this.file = event.target.files[0];
+    this.imagenInvalida = !this.file;
+    
   }
 
-  crearHerramienta() {
-    // Validación completa en Angular
-    if (!this.nombre || !this.categoria || !this.codigo || !this.modelo || !this.serie || 
-        !this.marca || !this.color || !this.ubicacion || !this.file) {
-      this.errorMessage = 'Todos los campos son obligatorios antes de enviar.';
-      alert(this.errorMessage);
+
+  crearHerramienta(form: NgForm) {
+    if (form.invalid || !this.file) {
+      Object.values(form.controls).forEach(control => control.markAsTouched());
+      this.imagenInvalida = !this.file; 
+      if (!this.file) {
+        this.messageService.setMessage('La imagen es obligatoria', 'error');
+      }
       return;
     }
-
     const formData = new FormData();
-    formData.append('maquina', this.nombre);
+    formData.append('nombre', this.nombre);
     formData.append('categoria', this.categoria);
     formData.append('codigo', this.codigo);
     formData.append('modelo', this.modelo);
@@ -63,27 +79,28 @@ export class Herramienta {
 
     this.herramientaService.crear(formData).subscribe({
       next: (response: any) => {
-        alert(response.mensaje);
-
-        // Limpiar campos
-        this.nombre = '';
-        this.categoria = '';
-        this.codigo = '';
-        this.modelo = '';
-        this.serie = '';
-        this.marca = '';
-        this.color = '';
-        this.ubicacion = '';
-        this.file = {} as File;
-
-        // Limpiar input de archivo
-        if (this.fileInput) this.fileInput.nativeElement.value = '';
+        this.messageService.setMessage(response.mensaje || 'Herramienta creada correctamente', 'success');
+        this.router.navigate(['/superadmin/inventario']);
       },
       error: (err) => {
-        console.error(err);
-        this.errorMessage = err.error?.error || 'Error al crear herramienta';
-        alert(this.errorMessage);
+        this.messageService.setMessage(err.error?.error || 'Error al crear herramienta', 'error');
+        this.router.navigate(['/superadmin/inventario']);
       }
     });
+  }
+
+  private limpiarFormulario(form: NgForm) {
+    this.nombre = '';
+    this.categoria = '';
+    this.codigo = '';
+    this.modelo = '';
+    this.serie = '';
+    this.marca = '';
+    this.color = '';
+    this.ubicacion = '';
+    this.file = {} as File;
+
+    if (this.fileInput) this.fileInput.nativeElement.value = '';
+    form.resetForm();
   }
 }

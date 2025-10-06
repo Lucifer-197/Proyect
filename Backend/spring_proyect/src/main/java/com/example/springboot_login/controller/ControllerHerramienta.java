@@ -50,7 +50,7 @@ public class ControllerHerramienta {
     @PostMapping
     @Transactional
     public ResponseEntity<?> crearHerramienta(
-            @RequestParam("maquina") String maquina,
+            @RequestParam("nombre") String nombre,
             @RequestParam("categoria") String categoria,
             @RequestParam(value = "modelo", required = false) String modelo,
             @RequestParam(value = "serie", required = false) String serie,
@@ -101,7 +101,7 @@ public class ControllerHerramienta {
 
             // Crear objeto y asignar valores
             ModelHerramienta herramienta = new ModelHerramienta();
-            herramienta.setMaquina(maquina);
+            herramienta.setNombre(nombre);
             herramienta.setCategoria(categoria);
             herramienta.setModelo(modelo);
             herramienta.setSerie(serie);
@@ -134,7 +134,7 @@ public class ControllerHerramienta {
             return ResponseEntity.notFound().build();
         }
 
-        existente.setMaquina(herramienta.getMaquina());
+        existente.setNombre(herramienta.getNombre());
         existente.setCategoria(herramienta.getCategoria());
         existente.setModelo(herramienta.getModelo());
         existente.setSerie(herramienta.getSerie());

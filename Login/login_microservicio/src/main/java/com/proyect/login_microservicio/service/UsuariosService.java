@@ -14,7 +14,7 @@ import com.proyect.login_microservicio.repository.UsuariosRepository;
 
 @Service
 public class UsuariosService {
-    
+
     @Autowired // Inyecta el repositorio de usuarios
     private UsuariosRepository usuariosRepository;
 
@@ -24,8 +24,17 @@ public class UsuariosService {
     @Autowired // Inyecta el codificador de contraseñas
     private PasswordEncoder passwordEncoder;
 
+    //
+    public UsuariosService(UsuariosRepository usuariosRepository) {
+        this.usuariosRepository = usuariosRepository;
+    }
+
+    public List<UsuariosModel> buscarUsuarios(String filtro) {
+        return usuariosRepository.buscarPorFiltro(filtro);
+    }
+
     public List<UsuariosModel> getAllUsuarios() {
-        return usuariosRepository.findAll(); // Retorna todos los usuarios
+        return usuariosRepository.findAllByOrderByIdUsuariosDesc();
     }
 
     public UsuariosModel getUsuarioById(Long id) {
@@ -40,7 +49,7 @@ public class UsuariosService {
         UsuariosModel usuario = new UsuariosModel(); // Crea nuevo usuario
         usuario.setNombreUsuario(request.getNombreUsuario()); // Asigna nombre
         usuario.setClave(passwordEncoder.encode(request.getClave())); // Codifica y asigna la clave
-        usuario.setRolesModel (rol); // Asigna el rol
+        usuario.setRolesModel(rol); // Asigna el rol
 
         return usuariosRepository.save(usuario); // Guarda el usuario
     }
@@ -52,10 +61,10 @@ public class UsuariosService {
         usuario.setNombreUsuario(request.getNombreUsuario()); // Actualiza nombre
         usuario.setClave(passwordEncoder.encode(request.getClave())); // Actualiza y codifica clave
 
-       RolesModel  rol = rolesRepository.findById(request.getIdRol()) // Busca nuevo rol por ID
+        RolesModel rol = rolesRepository.findById(request.getIdRol()) // Busca nuevo rol por ID
                 .orElseThrow(() -> new RuntimeException("Rol no encontrado")); // Lanza excepción si no existe
 
-        usuario.setRolesModel (rol); // Asigna nuevo rol
+        usuario.setRolesModel(rol); // Asigna nuevo rol
 
         return usuariosRepository.save(usuario); // Guarda cambios
     }

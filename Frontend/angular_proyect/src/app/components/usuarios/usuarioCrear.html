@@ -1,0 +1,77 @@
+<!-- Formulario para crear un nuevo usuario -->
+<!-- Contenedor principal centrado con un ancho máximo -->
+<div class="container my-5" style="max-width: 700px;">
+  <!-- Tarjeta con sombra y bordes redondeados -->
+  <div class="card shadow-sm rounded-4">
+    
+    <!-- Encabezado de la tarjeta con fondo azul oscuro y texto blanco -->
+    <div class="card-header text-center text-white" style="background-color: #252772;">
+      <h5 class="mb-0">Crear Usuario</h5>
+    </div>
+
+    <!-- Cuerpo de la tarjeta con padding -->
+    <div class="card-body p-4">
+      
+      <!-- Formulario con referencia "usuarioForm", que ejecuta "crearUsuario()" al enviar -->
+      <!-- autocomplete="off" evita que el navegador sugiera autocompletado -->
+      <form #usuarioForm="ngForm" (ngSubmit)="crearUsuario(usuarioForm)" autocomplete="off">
+
+        <!-- Inputs ocultos para desactivar sugerencias de usuario/clave del navegador -->
+        <input type="text" style="display:none" autocomplete="username">
+        <input type="password" style="display:none" autocomplete="new-password">
+
+        <!-- Campo: Nombre de Usuario -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Nombre de Usuario</label>
+          <!-- ngModel enlaza el valor al objeto "nuevoUsuario.nombreUsuario" -->
+          <!-- name="nombreUsuario" lo registra en el formulario -->
+          <input type="text" class="form-control" [(ngModel)]="nuevoUsuario.nombreUsuario" 
+                 name="nombreUsuario" required #nombreInput="ngModel">
+          
+          <!-- Mensaje de validación: aparece si el campo es inválido y fue tocado -->
+          <div *ngIf="nombreInput.invalid && nombreInput.touched" class="text-danger mt-1">
+            El nombre es obligatorio
+          </div>
+        </div>
+
+        <!-- Campo: Clave -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Clave</label>
+          <input type="password" class="form-control" [(ngModel)]="nuevoUsuario.clave" 
+                 name="clave" required #claveInput="ngModel">
+          <div *ngIf="claveInput.invalid && claveInput.touched" class="text-danger mt-1">
+            La clave es obligatoria
+          </div>
+        </div>
+
+        <!-- Campo: Rol -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Rol</label>
+          <!-- Select enlazado a "nuevoUsuario.idRol" -->
+          <select class="form-select" [(ngModel)]="nuevoUsuario.idRol" 
+                  name="idRol" required #rolInput="ngModel">
+            <!-- Opción por defecto -->
+            <option value="">Seleccione un rol</option>
+            <!-- Lista de roles generada dinámicamente -->
+            <option *ngFor="let rol of rolesFiltrados" [value]="rol.idRol">
+              {{ rol.nombreRol }}
+            </option>
+          </select>
+          <div *ngIf="rolInput.invalid && rolInput.touched" class="text-danger mt-1">
+            El rol es obligatorio
+          </div>
+        </div>
+
+        <!-- Botón para enviar el formulario -->
+        <div class="d-grid mt-3">
+          <button type="submit" class="btn btn-success">Crear Usuario</button>
+        </div>
+      </form>
+
+      <!-- Mensaje dinámico de éxito o error, con estilos según "mensajeTipo" -->
+      <div *ngIf="mensaje" class="alert mt-3 text-center" [ngClass]="mensajeTipo">
+        {{ mensaje }}
+      </div>
+    </div>
+  </div>
+</div>

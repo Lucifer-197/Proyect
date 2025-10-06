@@ -16,7 +16,9 @@ export class UsuarioService {
   addUsuario(usuario: any): Observable<any> {
     return this.http.post(this.apiUrl, usuario, { withCredentials: true });
   }
-
+buscarUsuarios(filtro: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/buscar?filtro=${filtro}`);
+  }
   updateUsuario(usuario: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${usuario.idUsuarios}`, usuario, { withCredentials: true });
   }

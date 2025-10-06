@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.proyect.login_microservicio.dto.UsuariosRequest;
 import com.proyect.login_microservicio.model.UsuariosModel;
+import com.proyect.login_microservicio.repository.UsuariosRepository;
 import com.proyect.login_microservicio.service.UsuariosService;
 
 import jakarta.validation.Valid;
@@ -55,5 +56,10 @@ public class UsuariosController {
     public void deleteUsuario(@PathVariable Long id) {
         usuarioService.deleteUsuario(id);
     }
-    
+@GetMapping("/buscar")
+public List<UsuariosModel> buscar(@RequestParam String filtro) {
+    return usuarioService.buscarUsuarios(filtro);
+}
+
+
 }

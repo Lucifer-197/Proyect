@@ -13,11 +13,11 @@ public class ModelHerramienta {
 
     @Id //Indica que es la llave primaria pk
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Genera automaticamente la pk (autoincremental)
-    private Long id_herramienta;
+    private Long idHerramienta;
 
     // Máquina (nombre principal)
-    @Column(name = "maquina", nullable = false, unique= true)
-    private String maquina;
+    @Column(name = "nombre", nullable = false, unique= true)
+    private String nombre;
 
     // Categoría de la herramienta
     @Column(name = "categoria", nullable = false)
@@ -53,20 +53,20 @@ public class ModelHerramienta {
 
     // Getters y Setters
 
-    public Long getId_herramienta() {
-        return id_herramienta;
+    public Long getIdHerramienta() {
+        return idHerramienta;
     }
 
-    public void setId_herramienta(Long id_herramienta) {
-        this.id_herramienta = id_herramienta;
+    public void setIdHerramienta(Long idHerramienta) {
+        this.idHerramienta = idHerramienta;
     }
 
-    public String getMaquina() {
-        return maquina;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setMaquina(String maquina) {
-        this.maquina = maquina;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getCategoria() {

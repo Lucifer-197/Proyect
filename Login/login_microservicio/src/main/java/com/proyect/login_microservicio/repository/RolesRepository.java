@@ -1,9 +1,12 @@
 package com.proyect.login_microservicio.repository;
 
 import com.proyect.login_microservicio.model.RolesModel;
+import com.proyect.login_microservicio.model.UsuariosModel;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -14,4 +17,6 @@ public interface RolesRepository extends JpaRepository<RolesModel, Long> {
 
     // Verificar si un rol existe por nombre
     boolean existsByNombreRol(String nombreRol);
+
+    List<RolesModel> findAllByOrderByIdRolDesc();
 }

@@ -17,7 +17,7 @@ public class ServiceHerramienta {
 
     // Retorna una lista con todas las herramientas almacenadas en la base de datos
     public List<ModelHerramienta> listar() {
-        return repositoryHerramienta.findAll();
+        return repositoryHerramienta.findAllByOrderByIdHerramientaDesc();
     }
 
     // Busca y devuelve una herramienta por su ID; si no existe, retorna null
@@ -33,5 +33,8 @@ public class ServiceHerramienta {
     // Elimina una herramienta de la base de datos a partir de su ID
     public void eliminar(Long id) {
         repositoryHerramienta.deleteById(id);
+    }
+    public List<ModelHerramienta> buscarHerramientas(String filtro) {
+        return repositoryHerramienta.buscarPorFiltro(filtro);
     }
 }

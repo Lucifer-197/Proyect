@@ -14,7 +14,7 @@ import { routes } from './app/app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
 // Importa el interceptor personalizado que agregaste para los tokens.
-import { Interceptor } from './app/interceptor';
+import { AuthInterceptor } from './app/interceptor';
 
 // Aquí se arranca la aplicación con todos los proveedores necesarios.
 bootstrapApplication(App, {
@@ -23,6 +23,6 @@ bootstrapApplication(App, {
     provideRouter(routes),
 
     // Proveedor del cliente HTTP con el interceptor del token incluido.
-    provideHttpClient(withInterceptors([Interceptor]))
+    provideHttpClient(withInterceptors([ AuthInterceptor]))
   ]
 });

@@ -45,9 +45,9 @@ public class LoginController {
             ResponseCookie accessCookie = ResponseCookie.from("accessToken", accessToken)
                     .httpOnly(true)
                     .path("/")
-                    .secure(true)       // en prod → true (https)
+                    .secure(true)       
                     .sameSite("None")    // necesario para cross-origin
-                    .maxAge(60 * 15)
+                    .maxAge(60 * 5)
                     .build();
 
             // Refresh Token
@@ -56,7 +56,7 @@ public class LoginController {
                     .path("/")
                     .secure(true)       // en prod → true
                     .sameSite("None")    // igual que el accessToken
-                    .maxAge(60 * 60 * 24 * 7) // 7 días
+                    .maxAge(60 * 10 ) 
                     .build();
 
             response.addHeader("Set-Cookie", accessCookie.toString());

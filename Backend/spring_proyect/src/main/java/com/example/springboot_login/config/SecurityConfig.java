@@ -27,7 +27,7 @@ public class SecurityConfig {
         http
             // Deshabilitamos CSRF (no se necesita con JWT)
             .csrf(csrf -> csrf.disable())
-
+            .httpBasic(httpBasic -> httpBasic.disable())
             // Stateless (JWT)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 

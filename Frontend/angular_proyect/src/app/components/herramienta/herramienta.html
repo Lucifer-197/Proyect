@@ -1,189 +1,121 @@
+<div class="d-flex justify-content-center align-items-center my-5">
+  <div class="card shadow-lg border-0 rounded-4" style="max-width: 900px; width: 100%;">
+
+    <!-- Header -->
+    <div class="card-header text-white text-center py-3" style="background-color: #252772;">
+      <h5 class="mb-0">Crear Herramienta</h5>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body p-4">
+      <form #herramientaForm="ngForm" (ngSubmit)="crearHerramienta(herramientaForm)" autocomplete="off">
+        <div class="row g-3">
+
+          <!-- Máquina -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Máquina</label>
+            <input type="text" class="form-control" [(ngModel)]="nombre" name="nombre" (input)="generarCodigo()"
+              required #nombreInput="ngModel" autocomplete="off">
+            <div *ngIf="nombreInput.invalid && nombreInput.touched" class="text-danger mt-1">
+              El nombre de la máquina es obligatorio
+            </div>
+          </div>
+
+          <!-- Categoría -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Categoría</label>
+            <select class="form-select" [(ngModel)]="categoria" name="categoria" (change)="generarCodigo()" required
+              #categoriaInput="ngModel" autocomplete="off">
+              <option value="">Seleccione una categoría</option>
+              <option value="MAQUINA">Máquina</option>
+              <option value="INSTRUMENTO DE MEDICION">Instrumento de Medición</option>
+              <option value="ESTACION FIJA">Estación Fija</option>
+              <option value="HERRAMIENTA NEUMATICA">Herramienta Neumática</option>
+              <option value="HERRAMIENTA ELECTRICA">Herramienta Eléctrica</option>
+              <option value="HERRAMIENTA MANUAL">Herramienta Manual</option>
+              <option value="PLANTA">Planta</option>
+              <option value="EQUIPO">Equipo</option>
+            </select>
+            <div *ngIf="categoriaInput.invalid && categoriaInput.touched" class="text-danger mt-1">
+              La categoría es obligatoria
+            </div>
+          </div>
+
+          <!-- Modelo -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Modelo</label>
+            <input type="text" class="form-control" [(ngModel)]="modelo" name="modelo" required #modeloInput="ngModel"
+              autocomplete="off">
+            <div *ngIf="modeloInput.invalid && modeloInput.touched" class="text-danger mt-1">
+              El modelo es obligatorio
+            </div>
+          </div>
+
+          <!-- Serie -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Serie</label>
+            <input type="text" class="form-control" [(ngModel)]="serie" name="serie" required #serieInput="ngModel"
+              autocomplete="off">
+            <div *ngIf="serieInput.invalid && serieInput.touched" class="text-danger mt-1">
+              La serie es obligatoria
+            </div>
+          </div>
+
+          <!-- Marca -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Marca</label>
+            <input type="text" class="form-control" [(ngModel)]="marca" name="marca" required #marcaInput="ngModel"
+              autocomplete="off">
+            <div *ngIf="marcaInput.invalid && marcaInput.touched" class="text-danger mt-1">
+              La marca es obligatoria
+            </div>
+          </div>
+
+          <!-- Código -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Código</label>
+            <input type="text" class="form-control" [value]="codigo" readonly>
+          </div>
+
+          <!-- Color -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Color</label>
+            <input type="text" class="form-control" [(ngModel)]="color" name="color" required #colorInput="ngModel"
+              autocomplete="off">
+            <div *ngIf="colorInput.invalid && colorInput.touched" class="text-danger mt-1">
+              El color es obligatorio
+            </div>
+          </div>
+
+          <!-- Ubicación -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Ubicación</label>
+            <input type="text" class="form-control" [(ngModel)]="ubicacion" name="ubicacion" required
+              #ubicacionInput="ngModel" autocomplete="off">
+            <div *ngIf="ubicacionInput.invalid && ubicacionInput.touched" class="text-danger mt-1">
+              La ubicación es obligatoria
+            </div>
+          </div>
+
+          <!-- Imagen -->
+          <div class="col-md-4">
+            <label class="form-label fw-semibold">Imagen</label>
+            <input type="file" class="form-control" (change)="onFileSelected($event)" #fileInput required>
+                 <div *ngIf="imagenInvalida" class="text-danger mt-1">
+          La imagen es obligatoria
+        </div>
+          </div>
+
+        </div>
+   
+
+        <!-- Botón Crear -->
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-success">Crear Herramienta</button>
+        </div>
+      </form>
 
 
-<div class="wrapper">
-  <div class="content-wrapper">
-    <section class="content pt-4">
-      <div class="container-fluid">
-        <h4 class="mb-3" style="color:#495057">Crear Herramienta</h4>
-
-        <!-- Información General -->
-        <div class="card" style="border-radius: 0;">
-          <div class="card-header text-white" style="background-color: rgb(37, 37, 119);border-radius: 0;">
-            <h3 class="card-title">Información General de la Herramienta</h3>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label>Máquina</label>
-                <input type="text" class="form-control" [(ngModel)]="nombre" (input)="generarCodigo()">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Categoría</label>
-                <select class="form-control" [(ngModel)]="categoria" (change)="generarCodigo()">
-                  <option value="">Seleccione una categoría</option>
-                  <option value="MAQUINA">Maquina</option>
-                  <option value="INSTRUMENTO DE MEDICION">Instrumento de Medición</option>
-                  <option value="ESTACION FIJA">Estación Fija</option>
-                  <option value="HERRAMIENTA NEUMATICA">Herramienta Neumática</option>
-                  <option value="HERRAMIENTA ELECTRICA">Herramienta Eléctrica</option>
-                  <option value="HERRAMIENTA MANUAL">Herramienta Manual</option>
-                  <option value="PLANTA">Planta</option>
-                  <option value="EQUIPO">Equipo</option>
-                </select>
-              </div>
-              <div class="form-group col-md-4">
-                <label>Modelo</label>
-                <input type="text" class="form-control" [(ngModel)]="modelo">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Serie</label>
-                <input type="text" class="form-control" [(ngModel)]="serie">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Marca</label>
-                <input type="text" class="form-control" [(ngModel)]="marca">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Código</label>
-                <input type="text" class="form-control" [value]="codigo" readonly>
-              </div>
-              <div class="form-group col-md-4">
-                <label>Color</label>
-                <input type="text" class="form-control" [(ngModel)]="color">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Ubicación</label>
-                <input type="text" class="form-control" [(ngModel)]="ubicacion">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Imagen</label>
-<input type="file" class="form-control-file" (change)="onFileSelected($event)" #fileInput>
-              </div>
-            </div>
-          </div>
-        </div>
-    <!-- Sección: Ficha Histórica -->
-        <div class="card mt-5" style="border-radius: 0;">
-          <div class="card-header text-white" style="background-color: rgb(37, 37, 119);border-radius: 0;">
-            <h3 class="card-title">Ficha Histórica</h3>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label>Valor</label>
-                <input type="text" class="form-control" name="valor">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Fecha de Adquisición</label>
-                <input type="date" class="form-control" name="fecha_adquisicion">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Fecha de Instalación</label>
-                <input type="date" class="form-control" name="fecha_instalacion">
-              </div>
-            </div>
-            <hr>
-            <h5>Vendedor</h5>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label>Nombre</label>
-                <input type="text" class="form-control" name="vendedor_nombre">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Teléfono</label>
-                <input type="text" class="form-control" name="vendedor_telefono">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Dirección</label>
-                <input type="text" class="form-control" name="vendedor_direccion">
-              </div>
-            </div>
-            <hr>
-            <h5>Técnico</h5>
-            <div class="row">
-              <div class="form-group col-md-4">
-                <label>Nombre</label>
-                <input type="text" class="form-control" name="tecnico_nombre">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Teléfono</label>
-                <input type="text" class="form-control" name="tecnico_telefono">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Dirección</label>
-                <input type="text" class="form-control" name="tecnico_direccion">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Tipo</label>
-                <select class="form-control" name="tecnico_tipo">
-                  <option value="Interno">Interno</option>
-                  <option value="Externo">Externo</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sección: Motor -->
-        <div class="card mt-5" style="border-radius: 0;">
-          <div class="card-header text-white" style="background-color: rgb(37, 37, 119);border-radius: 0;">
-            <h3 class="card-title">Motor</h3>
-          </div>
-          <div class="card-body">
-            <div class="row">
-              <div class="form-group col-md-3">
-                <label>HP</label>
-                <input type="text" class="form-control" name="hp">
-              </div>
-              <div class="form-group col-md-3">
-                <label>RPM</label>
-                <input type="text" class="form-control" name="rpm">
-              </div>
-              <div class="form-group col-md-3">
-                <label>Voltios</label>
-                <input type="text" class="form-control" name="voltios">
-              </div>
-              <div class="form-group col-md-3">
-                <label>Amperios</label>
-                <input type="text" class="form-control" name="amperios">
-              </div>
-              <div class="form-group col-md-4">
-                <label>Tipo</label>
-                <input type="text" class="form-control" name="tipo_motor">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Sección: Arranque -->
-        <div class="card mt-5" style="border-radius: 0;">
-          <div class="card-header text-white" style="background-color: rgb(37, 37, 119);border-radius: 0;">
-            <h3 class="card-title">Sistema de Arranque</h3>
-          </div>
-          <div class="card-body">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="interruptor">
-              <label class="form-check-label">Interruptor</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="contactor">
-              <label class="form-check-label">Contactor</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="termico">
-              <label class="form-check-label">Térmico</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="acometida">
-              <label class="form-check-label">Acometida</label>
-            </div>
-          </div>
-        </div>
-        <!-- Botón Final -->
-        <div class="text-right pb-4 mt-5">
-          <button class="btn btn-success" (click)="crearHerramienta()">Crear Herramienta</button>
-        </div>
-      </div>
-    </section>
+    </div>
   </div>
 </div>

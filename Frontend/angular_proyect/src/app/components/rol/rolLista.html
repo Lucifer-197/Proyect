@@ -1,0 +1,88 @@
+<div class="container my-5" style="max-width: 1200px;">
+
+  <!-- Título principal -->
+  <div class="mb-4">
+    <h4 class="text-start text-dark fw-semibold">Gestión de Roles</h4>
+  </div>
+
+  <!-- Barra superior: búsqueda y crear -->
+  <div class="d-flex justify-content-end align-items-center mb-4 gap-4">
+    <div class="flex-grow-1" style="max-width: 300px;">
+      <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Buscar rol"
+             (input)="onSearchChange()">
+    </div>
+
+    <button class="btn btn-success" routerLink="/superadmin/roles/crear">
+      <i class="fas fa-plus me-2"></i>Crear Rol
+    </button>
+  </div>
+
+  <!-- Mensaje de alerta -->
+<div *ngIf="mensaje" class="alert text-start" [ngClass]="mensajeTipo" role="alert">
+  {{ mensaje }}
+</div>
+
+
+  <!-- Confirmación de eliminación -->
+  <div *ngIf="rolToDelete" class="alert alert-warning d-flex justify-content-between align-items-center" role="alert">
+    <span>¿Seguro que quieres eliminar el rol "{{ rolToDelete.nombreRol }}"?</span>
+    <div>
+      <button class="btn btn-danger btn-sm me-2" (click)="deleteRol()">Sí, eliminar</button>
+      <button class="btn btn-secondary btn-sm" (click)="cancelDelete()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Tabla de roles -->
+  <div class="table-responsive shadow-sm rounded-3">
+    <table class="table table-hover align-middle mb-0 text-start custom-table">
+      <thead class="table-primary text-dark">
+        <tr>
+          <th class="py-3 ps-4" style="background-color: #252772;color:white; width: 45%;">Rol</th>
+          <th class="py-3" style="background-color: #252772;color:white; width: 40%;">Descripción</th>
+          <th class="py-3 pe-4 text-end" style="background-color: #252772;color:white; width: 20%;">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rol of rolesFiltrados | paginate: { itemsPerPage: 10, currentPage: page }"
+            class="shadow-sm rounded-3 mb-2">
+
+          <!-- Modo edición -->
+          <ng-container *ngIf="editingRol?.idRol === rol.idRol; else viewRow">
+            <td class="ps-4">
+              <input [(ngModel)]="editingRol.nombreRol" name="editNombreRol" class="form-control form-control-sm" />
+            </td>
+            <td>
+              <input [(ngModel)]="editingRol.descripcion" name="editDescripcion" class="form-control form-control-sm" />
+            </td>
+            <td class="text-end pe-4">
+              <div class="d-inline-flex gap-2">
+                <i class="fas fa-save text-success cursor-pointer" (click)="updateRol()"></i>
+                <i class="fas fa-times text-danger cursor-pointer" (click)="cancelEditRol()"></i>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Modo visualización -->
+          <ng-template #viewRow>
+            <td class="ps-4 text-dark">{{ rol.nombreRol }}</td>
+            <td class="text-muted">{{ rol.descripcion }}</td>
+            <td class="text-end pe-4">
+              <div class="d-inline-flex gap-3">
+                <i class="fas fa-pencil-alt text-primary cursor-pointer" (click)="editRol(rol)"></i>
+                <i class="fas fa-trash text-danger cursor-pointer" (click)="confirmDelete(rol)"></i>
+              </div>
+            </td>
+          </ng-template>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Paginación -->
+  <div class="d-flex justify-content-center mt-4">
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"
+                         class="my-pagination">
+    </pagination-controls>
+  </div>
+</div>

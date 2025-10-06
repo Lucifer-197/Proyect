@@ -5,11 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class HerramientaService {
   private baseUrl = 'http://localhost:8080/api/herramientas';
+    private secondUrl = 'http://localhost:8080/api/inventario';
 
   constructor(private http: HttpClient) {}
 
   listar(): Observable<any[]> {
-    return this.http.get<any[]>(this.baseUrl, { withCredentials: true });
+    return this.http.get<any[]>(this.secondUrl, { withCredentials: true });
+  }
+
+  buscarHerramientas(filtro: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.secondUrl}/buscar?filtro=${filtro}`, { withCredentials: true });
   }
 
   obtener(id: number): Observable<any> {
